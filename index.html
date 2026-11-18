@@ -311,7 +311,8 @@
   .final h2 { -webkit-text-stroke-color: #111; }
   .final .sub { color: #E3E6FF; }
   .final .kicker { -webkit-text-stroke-color: var(--lime); }
-  .games { display: grid; gap: 14px; }
+  .games { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .gm, .gm-body, .gm-box, .plays-box { min-width: 0; }
   .game .badge, .gm .badge {
     font-size: 13px; font-weight: 900;
     padding: 3px 10px;
@@ -332,6 +333,9 @@
   .gm > summary::after { content: "▼"; content: "▼" / ""; font-size: 14px; opacity: .7; transition: transform .25s ease; }
   .gm[open] > summary::after { transform: rotate(180deg); }
   .gm > summary:hover { color: var(--lime); }
+  .gm.lost > summary:hover { color: var(--pink); }
+  .gm .res.win { color: var(--lime); }
+  .gm .res.lose { color: var(--pink); }
   .gm-body { padding: 0 20px 20px; }
   .gm-box li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; padding: 4px 0; }
   .gm-box li + li { border-top: 1px dashed #ffffff26; }
@@ -358,20 +362,24 @@
   .ls tr + tr td { border-top: 1px solid #ffffff1a; }
   .ls td.k { border-left: 1px solid #ffffff33; font-weight: 700; }
   .ls th.k { border-left: 1px solid #ffffff33; }
-  .gm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+  .gm-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; margin-top: 12px; }
   .gm-box { background: #ffffff10; padding: 12px 14px; font-size: 14px; }
   .gm-box h4 { font-size: 13px; color: var(--lime); margin-bottom: 6px; }
   .gm-box ul { list-style: none; display: grid; gap: 4px; }
   .gm-box li { opacity: .92; }
   .gm-box b { color: #fff; }
   .gm .plays { list-style: none; margin-top: 8px; display: grid; gap: 8px; font-size: 14px; }
-  .gm .plays li { display: grid; grid-template-columns: 64px 1fr; gap: 8px; }
+  .gm .plays li { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 8px; overflow-wrap: anywhere; }
   .gm .plays li .inn { font-weight: 900; font-size: 13px; padding: 2px 0; text-align: center; background: #ffffff22; height: fit-content; }
   .gm .plays li.sam .inn { background: var(--blue); color: #fff; }
   @media (max-width: 560px) {
     .gm > summary { padding: 14px 16px; }
     .gm-body { padding: 0 14px 16px; }
-    .gm-grid { grid-template-columns: 1fr; }
+    .gm-grid { grid-template-columns: minmax(0, 1fr); }
+    .gm.champ { box-shadow: none; }
+    .gm .plays li { grid-template-columns: 54px minmax(0, 1fr); }
+    .gm-top .score { font-size: 26px; }
+    .gm-title { font-size: 16px; }
     .gm-top .score { margin-left: 0; width: 100%; }
   }
 
@@ -1274,9 +1282,9 @@
     const sScore = total(g.ls[sam]), oScore = total(g.ls[1 - sam]);
     const box = (title, arr) => "<div class='gm-box'><h4>" + title + "</h4><ul>" + itemList(arr) + "</ul></div>";
     const el = document.createElement("details");
-    el.className = "gm" + (g.champ ? " champ" : "");
+    el.className = "gm" + (g.champ ? " champ" : "") + (g.win ? "" : " lost");
     el.innerHTML =
-      "<summary><span>" + g.no + " · " + sScore + ":" + oScore + " " + (g.win ? "승" : "패") + "</span></summary>" +
+      "<summary><span>" + g.no + " · " + sScore + ":" + oScore + " <span class='res " + (g.win ? "win'>승" : "lose'>패") + "</span></span></summary>" +
       "<div class='gm-body'>" +
         "<div class='gm-top'><span class='when'>" + g.when + "</span>" +
         "<span class='score'>삼성 " + (g.win ? "<span class='s'>" + sScore + "</span>" : sScore) + " : " +
