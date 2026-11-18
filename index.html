@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>삼성 라이온즈 우승 기록</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@700&family=Big+Shoulders+Display:wght@900&family=Black+Han+Sans&family=Grenze+Gotisch:wght@900&family=Noto+Sans+KR:wght@400;700;800;900&family=Rubik+Wet+Paint&family=Rubik:wght@900&family=Silkscreen:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@700&family=Big+Shoulders+Display:wght@900&family=Black+Han+Sans&family=Grenze+Gotisch:wght@900&family=Noto+Sans+KR:wght@400;700;800;900&family=Rubik:wght@900&family=Silkscreen:wght@700&display=swap" rel="stylesheet">
 <style>
   /* ===== 색: 집 파일 디자인 (검정 배경 · 전기 파랑 · 회색 종이 · 형광 분홍 · 형광 연두) ===== */
   :root {
@@ -153,21 +153,8 @@
   }
   .hero h1 span { display: block; paint-order: stroke fill; }
   .hero h1 .h1a { color: var(--paper); -webkit-text-stroke: clamp(8px, 1.2vw, 16px) var(--blue); transform: rotate(-2deg); }
-  .hero h1 .h1b { color: #111; -webkit-text-stroke: clamp(8px, 1.2vw, 16px) var(--hero-lime); transform: rotate(-3deg); margin-top: .1em; }
-  .h-tape {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 10px 16px;
-    background: #1A1A1A;
-    box-shadow: 0 0 0 5px var(--blue);
-    font-family: "Archivo Narrow", sans-serif;
-    font-weight: 700;
-    font-size: clamp(15px, 1.8vw, 22px);
-    letter-spacing: .5px;
-    color: var(--paper);
-    transform: rotate(-1deg);
-  }
-  .h-right { position: relative; display: flex; justify-content: center; padding: 30px 0 60px; }
+  .hero h1 .h1b { color: #111; -webkit-text-stroke: clamp(8px, 1.2vw, 16px) var(--lime); transform: rotate(-3deg); margin-top: .1em; }
+  .h-right { position: relative; display: flex; flex-direction: column; align-items: center; padding: 30px 0 0; }
   .h-paper {
     width: min(100%, 380px);
     background: var(--paper);
@@ -195,19 +182,42 @@
     transform: rotate(-8deg);
   }
   .h-v9 {
-    position: absolute; right: -6px; bottom: -10px;
-    font-family: "Rubik Wet Paint", sans-serif;
-    font-size: clamp(110px, 13vw, 190px);
-    line-height: .9;
+    align-self: flex-end;
+    margin: .12em -.04em 0 0;
+    font-family: "Rubik", sans-serif; font-weight: 900;
+    font-size: clamp(170px, 21vw, 300px);
+    line-height: .8;
+    letter-spacing: -.06em;
     color: #111;
-    -webkit-text-stroke: clamp(10px, 1.4vw, 22px) var(--hero-lime);
+    -webkit-text-stroke: clamp(12px, 1.6vw, 24px) var(--hero-lime);
     paint-order: stroke fill;
-    transform: rotate(9deg);
+    transform: rotate(-6deg);
   }
+  /* 아래로 내려 보라는 화살표: 세로선 없는 꺾쇠, 연하게 반짝이며 위아래로 통통 */
+  .scroll-hint {
+    position: fixed; left: 50%; bottom: 18px; z-index: 5;
+    width: 56px; height: 40px; margin-left: -28px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--paper);
+    animation: hint-bounce 1.8s ease-in-out infinite, hint-glow 1.8s ease-in-out infinite;
+  }
+  .scroll-hint svg { width: 44px; height: 24px; }
+  .scroll-hint.gone { visibility: hidden; opacity: 0 !important; transition: opacity .3s, visibility .3s; }
+  .scroll-hint path { fill: none; stroke: currentColor; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+  .scroll-hint path.edge { stroke: #111; stroke-width: 9; }
+  .scroll-hint:hover, .scroll-hint:focus-visible { color: var(--lime); outline: none; }
+  @keyframes hint-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(9px); } }
+  @keyframes hint-glow {
+    0%, 100% { opacity: .35; filter: drop-shadow(0 0 0 transparent); }
+    50% { opacity: .9; filter: drop-shadow(0 0 6px rgba(216,216,216,.7)); }
+  }
+  @media (prefers-reduced-motion: reduce) { .scroll-hint { animation: none; opacity: .7; } }
   @media (max-width: 760px) {
     .hero { min-height: 0; }
     .hero-inner { grid-template-columns: 1fr; }
-    .h-right { padding: 40px 0 70px; }
+    .h-right { padding: 40px 0 10px; }
+    .hero { padding-bottom: 24px; }
+    .h-v9 { align-self: center; margin: .12em 0 0; font-size: clamp(140px, 44vw, 230px); }
   }
 
   /* ===== 목록: 반응형 카드 (데스크톱 3열 · 태블릿 2열 · 모바일 1열) ===== */
@@ -622,7 +632,6 @@
       <p class="h-goth" aria-hidden="true">lions</p>
       <p class="h-pixel" aria-hidden="true">SAMSUNG</p>
       <h1><span class="h1a">삼성 라이온즈</span><span class="h1b">우승의 기록</span></h1>
-      <p class="h-tape">1982 – 2026 · KOREAN SERIES CHAMPIONS · V9</p>
     </div>
     <div class="h-right" aria-hidden="true">
       <div class="h-paper">
@@ -634,6 +643,9 @@
       <div class="h-v9">V9</div>
     </div>
   </div>
+  <a class="scroll-hint" href="#menu" aria-label="아래 내용 보기">
+    <svg viewBox="0 0 48 26" aria-hidden="true"><path class="edge" d="M5 5 L24 21 L43 5"/><path d="M5 5 L24 21 L43 5"/></svg>
+  </a>
 </header>
 
 <!-- 카드를 눌렀을 때만 보이는 '목록으로' 줄 -->
@@ -1432,6 +1444,15 @@
       else if (!id) window.scrollTo({ top: 0, behavior: "instant" });
     }
   }
+  // 조금이라도 내려가면 화살표 숨기기
+  const hint = document.querySelector(".scroll-hint");
+  const hideHint = () => hint.classList.toggle("gone", window.scrollY > 60);
+  window.addEventListener("scroll", hideHint, { passive: true });
+  hideHint();
+  hint.addEventListener("click", (e) => {
+    e.preventDefault();
+    document.getElementById("menu").scrollIntoView({ behavior: "smooth" });
+  });
   window.addEventListener("hashchange", route);
   route();
 
