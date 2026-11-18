@@ -353,7 +353,7 @@
   .gm .team.ss { background: var(--blue); color: #fff; }
   .gm .pn { font-weight: 900; color: #fff; font-size: 15px; }
   .gm .rec { color: #B5B5B5; font-size: 13.5px; }
-  .gm .plays b { color: var(--lime); font-weight: 900; }
+  .gm .plays b.sc { color: var(--lime); font-family: "Black Han Sans", sans-serif; font-weight: 400; font-size: 17px; letter-spacing: .5px; white-space: nowrap; }
   .gm .plays-box { margin-top: 12px; background: #ffffff10; padding: 12px 14px; }
   .gm .plays-box h4 { font-size: 13px; color: var(--lime); margin-bottom: 4px; }
   .gm.champ { border-color: var(--lime); box-shadow: 8px 8px 0 #111; }
@@ -520,12 +520,13 @@
   .era h3::after { content: " ＋"; content: " ＋" / ""; font-size: .6em; color: #444; }
   .era-more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s ease; }
   .era-more > div { overflow: hidden; }
-  .era:hover .era-more, .era:focus-within .era-more { grid-template-rows: 1fr; }
-  .era:hover h3::after, .era:focus-within h3::after { content: " −"; content: " −" / ""; }
-  .era:hover, .era:focus-within { box-shadow: 9px 9px 0 var(--blue); transform: translate(-3px, -3px); }
-  .era.gold:hover, .era.gold:focus-within { box-shadow: 9px 9px 0 var(--lime); }
+  .era.open .era-more { grid-template-rows: 1fr; }
+  .era.open h3::after { content: " −"; content: " −" / ""; }
+  .era:focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
+  .era:hover, .era.open { box-shadow: 9px 9px 0 var(--blue); transform: translate(-3px, -3px); }
+  .era.gold:hover, .era.gold.open { box-shadow: 9px 9px 0 var(--lime); }
   .era-more p:first-child { margin-top: 12px; }
-  @media (prefers-reduced-motion: reduce) { .era-more, .era { transition: none; } .era:hover, .era:focus-within { transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .era-more, .era { transition: none; } .era:hover, .era.open { transform: none; } }
   .era .go { display: inline-block; margin-top: 14px; font-weight: 800; color: var(--blue); text-decoration: none; }
   @media (max-width: 560px) {
     .timeline { padding-left: 26px; }
@@ -538,15 +539,18 @@
   .reveal { cursor: pointer; outline: none; transition: box-shadow .2s ease, transform .2s ease; }
   .reveal .more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s ease; }
   .reveal .more > div { overflow: hidden; }
-  .reveal:hover .more, .reveal:focus-within .more { grid-template-rows: 1fr; }
-  .reveal:hover, .reveal:focus-within { box-shadow: 9px 9px 0 var(--blue); transform: translate(-3px, -3px); }
-  .step.final-step.reveal:hover, .step.final-step.reveal:focus-within { box-shadow: 9px 9px 0 var(--lime); }
+  .reveal.open .more { grid-template-rows: 1fr; }
+  @media (hover: hover) and (pointer: fine) { .reveal:hover .more { grid-template-rows: 1fr; } }
+  .reveal:focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
+  .reveal:hover, .reveal.open { box-shadow: 9px 9px 0 var(--blue); transform: translate(-3px, -3px); }
+  .step.final-step.reveal:hover, .step.final-step.reveal.open { box-shadow: 9px 9px 0 var(--lime); }
   .reveal .plus::after { content: " ＋"; content: " ＋" / ""; font-size: .6em; opacity: .6; }
-  .reveal:hover .plus::after, .reveal:focus-within .plus::after { content: " −"; content: " −" / ""; }
+  .reveal.open .plus::after { content: " −"; content: " −" / ""; }
+  @media (hover: hover) and (pointer: fine) { .reveal:hover .plus::after { content: " −"; content: " −" / ""; } }
   .road { align-items: start; }
   @media (prefers-reduced-motion: reduce) {
     .reveal, .reveal .more { transition: none; }
-    .reveal:hover, .reveal:focus-within { transform: none; }
+    .reveal:hover, .reveal.open { transform: none; }
   }
 
   /* ===== 공통: 누르면 펼쳐지는 카드 ===== */
@@ -727,7 +731,7 @@
   <div class="wrap">
     <p class="kicker lime" aria-hidden="true">SINCE 1982</p>
     <h2>우승 연대기</h2>
-    <p class="sub">1982년 창단부터 2026년까지, 일곱 장면으로 보는 삼성<br>카드에 마우스를 올리면 (핸드폰은 누르면) 자세한 기록이 보여요</p>
+    <p class="sub">1982년 창단부터 2026년까지, 일곱 장면으로 보는 삼성<br>카드를 누르면 자세한 기록이 보이고, 한 번 더 누르면 접혀요</p>
     <div class="timeline">
 
       <div class="era card gold" tabindex="0">
@@ -1310,18 +1314,18 @@
         "</div>" +
         "<div class='plays-box'><h4>📋 득점 장면</h4><ol class='plays'>" +
           g.plays.map(([inn, isSam, t]) => "<li class='" + (isSam ? "sam" : "") + "'><span class='inn'>" + inn + "</span><span>" +
-            esc(t).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>") + "</span></li>").join("") +
+            esc(t).replace(/\*\*(.+?)\*\*/g, "$1").replace(/→ (\d+:\d+)/g, "→ <b class='sc'>$1</b>") + "</span></li>").join("") +
         "</ol></div>" +
       "</div>";
     gameList.appendChild(el);
   }
 
   // ===== 선수 카드: 누르면 펼치고 다시 누르면 접기 =====
-  document.querySelectorAll(".tap").forEach((el) => {
+  document.querySelectorAll(".tap, .era, .reveal").forEach((el) => {
     el.setAttribute("role", "button");
     el.setAttribute("aria-expanded", "false");
     const toggle = () => el.setAttribute("aria-expanded", el.classList.toggle("open"));
-    el.addEventListener("click", toggle);
+    el.addEventListener("click", (e) => { if (!e.target.closest("a")) toggle(); });
     el.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); }
     });
