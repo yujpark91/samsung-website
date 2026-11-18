@@ -115,7 +115,6 @@
   @media (max-width: 900px) { .menu { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 600px) { .menu { grid-template-columns: 1fr; gap: 14px; } }
   .menu .feature { display: flex; flex-direction: column; }
-  .menu .feature .go { margin-top: auto; padding-top: 14px; }
   .menu .feature .tag {
     align-self: flex-start;
     font-size: 12px; font-weight: 900;
@@ -345,23 +344,6 @@
   .player .key { font-weight: 900; margin: 6px 0; }
   .player p { color: var(--muted); font-size: 15px; }
 
-  /* ===== 전문가 평가 ===== */
-  .quotes {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-  }
-  .quote { padding: 26px 24px; position: relative; }
-  .quote::before {
-    content: "“";
-    position: absolute; top: -6px; left: 14px;
-    font-size: 80px; color: var(--sky); opacity: .35;
-    font-family: Georgia, serif;
-  }
-  .quote h3 { font-size: 19px; color: var(--blue); position: relative; }
-  .quote p { font-size: 15px; margin-top: 4px; }
-  .quote .who { margin-top: 12px; font-size: 13px; font-weight: 700; color: var(--muted); }
-
   /* ===== 우승 역사 ===== */
   .history { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
   .ring {
@@ -434,7 +416,7 @@
   .reveal:hover, .reveal:focus-within { box-shadow: 0 14px 30px rgba(7,76,161,.18); transform: translateY(-2px); }
   .reveal .plus::after { content: " ＋"; font-size: .7em; opacity: .55; font-weight: 700; }
   .reveal:hover .plus::after, .reveal:focus-within .plus::after { content: " −"; }
-  .road, .quotes { align-items: start; }
+  .road { align-items: start; }
   @media (prefers-reduced-motion: reduce) {
     .reveal, .reveal .more { transition: none; }
     .reveal:hover, .reveal:focus-within { transform: none; }
@@ -500,45 +482,7 @@
   .chapter-head h2 { color: #fff; margin: 6px 0; }
   .chapter-head p { color: #cfe0ff; }
 
-  /* ===== 응원 메시지 ===== */
-  .cheer form { display: flex; gap: 8px; flex-wrap: wrap; }
-  .cheer input {
-    flex: 1 1 220px;
-    padding: 14px 16px;
-    font-size: 16px;
-    border: 2px solid #c9d6ea;
-    border-radius: 12px;
-    font-family: inherit;
-  }
-  .cheer input:focus { outline: none; border-color: var(--blue); }
-  .cheer button {
-    padding: 14px 24px; font-size: 16px; font-weight: 700;
-    background: var(--blue); color: #fff;
-    border: none; border-radius: 12px; cursor: pointer;
-    font-family: inherit;
-  }
-  .cheer button:hover { background: var(--blue-dark); }
-  #messages { list-style: none; margin-top: 18px; display: grid; gap: 10px; }
-  #messages li {
-    background: var(--card);
-    padding: 14px 18px;
-    border-radius: 12px;
-    border-left: 5px solid var(--sky);
-  }
 
-  /* ===== 출처 ===== */
-  .sources { padding: 24px; font-size: 14px; }
-  .sources ul { padding-left: 20px; }
-  .sources li { margin: 4px 0; }
-  .sources a { color: var(--blue); }
-
-  footer {
-    background: var(--blue-dark);
-    color: #cfe0ff;
-    text-align: center;
-    padding: 28px 16px;
-    font-size: 14px;
-  }
 </style>
 </head>
 <body>
@@ -571,63 +515,36 @@
         <span class="tag">1985 – 2026</span>
         <h3>우승 반지</h3>
         <p>1985년부터 2026년까지 모은 우승 반지 9개</p>
-        <span class="go">보러 가기 →</span>
       </a>
       <a class="feature card" href="#story" data-title="우승 연대기">
         <div class="icon">📜</div>
         <span class="tag">일곱 장면</span>
         <h3>우승 연대기</h3>
         <p>창단부터 V9까지, 삼성의 45년을 일곱 장면으로</p>
-        <span class="go">보러 가기 →</span>
       </a>
       <a class="feature card" href="#ranks" data-title="정규시즌 순위 변화">
         <div class="icon">📈</div>
         <span class="tag">2010 – 2026</span>
         <h3>순위 변화</h3>
         <p>왕조에서 암흑기, 다시 정상까지 한눈에</p>
-        <span class="go">보러 가기 →</span>
       </a>
       <a class="feature card hot" href="#season2026" data-title="2026 우승 한눈에">
         <div class="icon">🏆</div>
         <span class="tag">V9</span>
         <h3>2026 우승 한눈에</h3>
         <p>숫자로 보는 우승과 포스트시즌 7승 3패의 길</p>
-        <span class="go">보러 가기 →</span>
       </a>
       <a class="feature card" href="#games" data-title="한국시리즈 경기별 기록">
         <div class="icon">⚾</div>
         <span class="tag">1 – 5차전</span>
         <h3>경기 기록</h3>
         <p>한국시리즈 이닝별 점수와 득점 장면</p>
-        <span class="go">보러 가기 →</span>
       </a>
       <a class="feature card" href="#players" data-title="선수별 기록">
         <div class="icon">⭐</div>
         <span class="tag">MVP 구자욱</span>
         <h3>선수별 기록</h3>
-        <p>MVP 구자욱부터 우승을 이끈 주역들까지</p>
-        <span class="go">보러 가기 →</span>
-      </a>
-      <a class="feature card" href="#allstats" data-title="전체 선수 기록">
-        <div class="icon">📊</div>
-        <span class="tag">타자 16 · 투수 12</span>
-        <h3>전체 선수 기록</h3>
-        <p>모든 선수의 시리즈 기록, 눌러서 순서대로 정렬</p>
-        <span class="go">보러 가기 →</span>
-      </a>
-      <a class="feature card" href="#experts" data-title="전문가들의 평가">
-        <div class="icon">🎙️</div>
-        <span class="tag">우승 비결</span>
-        <h3>전문가 평가</h3>
-        <p>언론과 구단이 꼽은 12년 만의 우승 비결</p>
-        <span class="go">보러 가기 →</span>
-      </a>
-      <a class="feature card" href="#cheer" data-title="축하 메시지 남기기">
-        <div class="icon">💌</div>
-        <span class="tag">직접 쓰기</span>
-        <h3>축하 메시지</h3>
-        <p>우승 축하 한마디를 직접 남겨 보세요</p>
-        <span class="go">보러 가기 →</span>
+        <p>MVP 구자욱과 우승 주역들, 그리고 전체 선수 기록</p>
       </a>
     </div>
   </div>
@@ -981,7 +898,7 @@
 </section>
 
 <!-- 4-2. 전체 선수 기록 -->
-<section id="allstats" data-view="allstats" hidden style="padding-top:0">
+<section id="allstats" data-view="players" hidden style="padding-top:0">
   <div class="wrap">
     <h2>전체 선수 기록</h2>
     <p class="sub">한국시리즈 5경기에 나온 삼성 선수 모두의 합계 기록<br>맨 윗줄의 기록 이름을 누르면 큰 순서대로 정렬돼요 · 한 번 더 누르면 작은 순서</p>
@@ -996,111 +913,7 @@
   </div>
 </section>
 
-<!-- 5. 전문가들의 평가 -->
-<section id="experts" data-view="experts" hidden style="padding-top:0">
-  <div class="wrap">
-    <h2>전문가들의 평가</h2>
-    <p class="sub">언론과 구단이 꼽은 우승 비결<br>제목에 마우스를 올리면 (핸드폰은 누르면) 내용이 보여요</p>
-    <div class="quotes">
-      <div class="quote card reveal" tabindex="0">
-        <h3 class="plus">"야구 몰라요"를 보여준 우승</h3>
-        <div class="more"><div>
-        <p>시리즈 전 대부분의 전문가는 정규시즌 1위 KT의 우승을 예상했어요. 하지만 삼성은 1차전을 내준 뒤 연장 12회 2차전을 잡으면서 흐름을 완전히 바꿨어요.</p>
-        <div class="who">— 세계일보 칼럼</div>
-        </div></div>
-      </div>
-      <div class="quote card reveal" tabindex="0">
-        <h3 class="plus">큰돈 없이 만든 우승</h3>
-        <div class="more"><div>
-        <p>스타 선수를 비싸게 사 오는 대신 사람과 시스템에 투자했어요. 선수 연봉 총액은 10개 구단 중 5위 수준이었지만, 꼭 필요한 곳(최형우 복귀, 외국인 선수 교체)에는 과감하게 투자했어요.</p>
-        <div class="who">— 디지털데일리 · 뉴스핌 · 서울경제</div>
-        </div></div>
-      </div>
-      <div class="quote card reveal" tabindex="0">
-        <h3 class="plus">데이터로 키운 젊은 투수들</h3>
-        <div class="more"><div>
-        <p>몸의 움직임을 분석하는 장비와 훈련 프로그램으로 선수마다 투구 특징을 분석했고, 그 결과 젊은 투수들이 핵심 전력으로 성장했어요.</p>
-        <div class="who">— 뉴스핌</div>
-        </div></div>
-      </div>
-      <div class="quote card reveal" tabindex="0">
-        <h3 class="plus">주장의 투혼이 만든 원팀</h3>
-        <div class="more"><div>
-        <p>포스트시즌 직전 다친 주장 구자욱이 아픈 몸으로 타율 5할을 치자 선수단이 하나로 뭉쳤다는 평가가 많아요. 부상 속 헌신은 MVP 투표에도 영향을 줬어요.</p>
-        <div class="who">— 언론 보도 종합 · YTN</div>
-        </div></div>
-      </div>
-      <div class="quote card reveal" tabindex="0">
-        <h3 class="plus">바꾸고, 키우고, 뭉쳤다</h3>
-        <div class="more"><div>
-        <p>구단은 우승 비결로 ① 문을 넓힌 체질 개선 ② 데이터에 바탕을 둔 육성 ③ 개인보다 팀을 앞세운 선수단의 헌신, 세 가지를 꼽았어요.</p>
-        <div class="who">— 삼성 라이온즈 구단 자체 분석 (MHN스포츠 보도)</div>
-        </div></div>
-      </div>
-      <div class="quote card reveal" tabindex="0">
-        <h3 class="plus">시즌 전 예상은? "마운드가 관건"</h3>
-        <div class="more"><div>
-        <p>개막 전 이대형 해설위원은 삼성의 타선은 막강하지만 마운드가 불안하다고 봤어요. 결국 가을에는 투수진이 버텨 주며 걱정을 이겨 냈어요.</p>
-        <div class="who">— 스포티비뉴스 (2026시즌 개막 전 인터뷰)</div>
-        </div></div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- 7. 축하 메시지 -->
-<section id="cheer" data-view="cheer" hidden class="cheer" style="padding-top:0">
-  <div class="wrap">
-    <h2>축하 메시지 남기기</h2>
-    <p class="sub">내 브라우저에만 저장돼요</p>
-    <form id="cheerForm">
-      <input id="cheerInput" maxlength="60" placeholder="예) 최강삼성! 12년 기다렸다!!" required>
-      <button type="submit">남기기 💙</button>
-    </form>
-    <ul id="messages"></ul>
-  </div>
-</section>
-
-<!-- 출처 -->
-<section id="sources" style="padding-top:0" data-home>
-  <div class="wrap">
-    <div class="sources card">
-      <b>📰 참고한 기사</b>
-      <p style="color:var(--muted); margin:6px 0 10px">기록은 언론 보도와 KBO 기록을 바탕으로 정리했어요. 정확한 공식 기록은 KBO 홈페이지에서 확인해 주세요.</p>
-      <ul>
-        <li><a href="https://www.mt.co.kr/sports/2026/11/08/2026110817592781571" target="_blank">머니투데이 – 삼성, 12년 만에 한국시리즈 우승</a></li>
-        <li><a href="https://biz.heraldcorp.com/article/10929738" target="_blank">헤럴드경제 – 삼성, kt 꺾고 12년 만에 한국시리즈 정상…V9</a></li>
-        <li><a href="https://biz.heraldcorp.com/article/10929297" target="_blank">헤럴드경제 – 1회 6득점 삼성, KS 3연승</a></li>
-        <li><a href="https://star.ohmynews.com/NWS_Web/OhmyStar/at_pg.aspx?CNTN_CD=A0003282959" target="_blank">오마이스타 – 12년 만에 KS 우승, 8년 만에 업셋 우승</a></li>
-        <li><a href="https://www.munhwa.com/article/11627869" target="_blank">문화일보 – 삼성, KIA 꺾고 플레이오프 통과</a></li>
-        <li><a href="https://www.newsen.com/news_view.php?uid=202611081728461031" target="_blank">뉴스엔 – 구자욱, 한국시리즈 MVP 수상</a></li>
-        <li><a href="https://www.topstarnews.net/news/articleView.html?idxno=16271273" target="_blank">톱스타뉴스 – '부상 투혼' 구자욱, 타율 0.500</a></li>
-        <li><a href="https://www.ytn.co.kr/_ln/0107_202611091401008264" target="_blank">YTN – 우승 뒤 숨은 영웅들</a></li>
-        <li><a href="https://m.news.nate.com/view/20261104n41260" target="_blank">네이트 스포츠 – 4안타 치고 결승 득점, 디아즈가 쓴 드라마</a></li>
-        <li><a href="https://www.segye.com/newsView/20261111515676" target="_blank">세계일보 – "야구 몰라요" 정수 보여준 삼성</a></li>
-        <li><a href="https://www.ddaily.co.kr/page/view/2026111015354262833" target="_blank">디지털데일리 – 삼성의 '실용경영', 야구단에도 통했다</a></li>
-        <li><a href="https://www.newspim.com/news/view/20261110000555" target="_blank">뉴스핌 – '실용·성과주의' 경영 통했다</a></li>
-        <li><a href="https://mhnse.com/news/articleView.html?idxno=1691128" target="_blank">MHN스포츠 – 삼성이 직접 분석한 우승 비결</a></li>
-        <li><a href="https://www.spotvnews.co.kr/news/articleView.html?idxno=800731" target="_blank">스포티비뉴스 – 이대형 해설에게 물었다, 삼성 우승 후보인가요?</a></li>
-        <li><a href="https://biz.heraldcorp.com/article/10924630" target="_blank">헤럴드경제 – 8점 차 리드에도 진땀…kt, KS 1차전 1점 차 승리</a></li>
-        <li><a href="https://www.kyeongin.com/article/1774049" target="_blank">경인일보 – kt wiz, 삼성 8-7로 잡고 KS 1차전 승리</a></li>
-        <li><a href="https://biz.heraldcorp.com/article/10926209" target="_blank">헤럴드경제 – '12회 결승점' 삼성, kt에 연장 혈투 승리</a></li>
-        <li><a href="https://www.kbmaeil.com/article/20261106500234" target="_blank">경북매일 – 삼성, KT에 5대 1 완승</a></li>
-        <li><a href="https://www.gukjenews.com/news/articleView.html?idxno=3744825" target="_blank">국제뉴스 – 한국시리즈 3차전 삼성 5-1 승리</a></li>
-        <li><a href="https://sports.khan.co.kr/article/202611071448003/" target="_blank">스포츠경향 – 1회 6득점, 1회말 최다 득점 기록 경신</a></li>
-        <li><a href="https://www.sportsworldi.com/newsView/20261108509660" target="_blank">스포츠월드 – 삼성, 5차전서 KT 12-1로 꺾고 12년 만에 우승</a></li>
-        <li><a href="https://www.mediapen.com/news/view/1136064" target="_blank">미디어펜 – 삼성 5차전서 끝냈다, 구자욱 MVP</a></li>
-        <li><a href="https://v.daum.net/v/20251027172618102" target="_blank">삼성 라이온즈 결산 – 2025시즌 성과와 과제</a></li>
-        <li><a href="https://www.koreabaseball.com/" target="_blank">KBO 공식 홈페이지 – 역대 순위·한국시리즈 기록</a></li>
-        <li><a href="https://eng.koreabaseball.com/Schedule/Scoreboard.aspx?searchDate=2026-11-08" target="_blank">KBO 공식 스코어보드 – 한국시리즈 이닝별 점수·안타·실책·사사구</a></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<footer>
-  삼성 라이온즈 팬이 만든 비공식 우승 기록 페이지입니다 · 지능정보사회 과제
-</footer>
 
 <script>
   // ===== 꽃가루(색종이) 효과 =====
@@ -1451,32 +1264,6 @@
   window.addEventListener("hashchange", route);
   route();
 
-  // ===== 축하 메시지 (내 컴퓨터 브라우저에 저장) =====
-  const list = document.getElementById("messages");
-  const input = document.getElementById("cheerInput");
-  let saved = [];
-  try { saved = JSON.parse(localStorage.getItem("cheers") || "[]"); } catch (e) {}
-
-  function show() {
-    list.innerHTML = "";
-    for (const text of saved) {
-      const li = document.createElement("li");
-      li.textContent = "🦁 " + text;
-      list.appendChild(li);
-    }
-  }
-
-  document.getElementById("cheerForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-    const text = input.value.trim();
-    if (!text) return;
-    saved.unshift(text);
-    try { localStorage.setItem("cheers", JSON.stringify(saved)); } catch (e) {}
-    input.value = "";
-    show();
-  });
-
-  show();
 </script>
 </body>
 </html>
