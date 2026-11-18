@@ -329,7 +329,7 @@
     font-family: "Black Han Sans", sans-serif; font-weight: 400; font-size: 26px;
   }
   .gm > summary::-webkit-details-marker { display: none; }
-  .gm > summary::after { content: "▼"; font-size: 14px; opacity: .7; transition: transform .25s ease; }
+  .gm > summary::after { content: "▼"; content: "▼" / ""; font-size: 14px; opacity: .7; transition: transform .25s ease; }
   .gm[open] > summary::after { transform: rotate(180deg); }
   .gm > summary:hover { color: var(--lime); }
   .gm-body { padding: 0 20px 20px; }
@@ -458,6 +458,17 @@
     transform: rotate(-8deg) scale(1.2);
     box-shadow: 0 0 0 6px var(--pink);
   }
+  .ring { font-family: "Rubik", sans-serif; cursor: pointer; }
+  .ring:hover, .ring:focus-visible { outline: none; box-shadow: 0 0 0 5px var(--lime); }
+  .ring.on { background: var(--blue); color: #fff; border-color: #111; box-shadow: 0 0 0 5px var(--lime); }
+  .ring.now.on { background: var(--lime); color: #111; box-shadow: 0 0 0 6px var(--pink), 0 0 0 11px #111; }
+  .ring-info { max-width: 620px; margin: 34px auto 0; padding: 22px 24px; transform: rotate(-1deg); }
+  .ring-info .ri-y { font-family: "Black Han Sans", sans-serif; font-size: 34px; line-height: 1.1; color: var(--blue); }
+  .ring-info .ri-t { font-weight: 800; margin-top: 2px; }
+  .ring-info dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; margin-top: 14px; }
+  .ring-info dt { font-size: 13px; font-weight: 900; background: #111; color: var(--paper); padding: 2px 10px; align-self: start; }
+  .ring-info dd { font-weight: 700; }
+  .ring-info .ri-n { margin-top: 12px; color: #333; font-size: 15px; }
   .note { text-align: center; color: var(--dim); font-size: 14px; margin-top: 20px; }
 
   /* ===== 우승 연대기 ===== */
@@ -488,11 +499,11 @@
   .era .facts span.w { background: var(--lime); color: #111; }
   .era .facts span.l { background: var(--pink); color: #111; }
   .era { cursor: pointer; outline: none; transition: box-shadow .2s ease, transform .2s ease; }
-  .era h3::after { content: " ＋"; font-size: .6em; color: #444; }
+  .era h3::after { content: " ＋"; content: " ＋" / ""; font-size: .6em; color: #444; }
   .era-more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s ease; }
   .era-more > div { overflow: hidden; }
   .era:hover .era-more, .era:focus-within .era-more { grid-template-rows: 1fr; }
-  .era:hover h3::after, .era:focus-within h3::after { content: " −"; }
+  .era:hover h3::after, .era:focus-within h3::after { content: " −"; content: " −" / ""; }
   .era:hover, .era:focus-within { box-shadow: 9px 9px 0 var(--blue); transform: translate(-3px, -3px); }
   .era.gold:hover, .era.gold:focus-within { box-shadow: 9px 9px 0 var(--lime); }
   .era-more p:first-child { margin-top: 12px; }
@@ -512,8 +523,8 @@
   .reveal:hover .more, .reveal:focus-within .more { grid-template-rows: 1fr; }
   .reveal:hover, .reveal:focus-within { box-shadow: 9px 9px 0 var(--blue); transform: translate(-3px, -3px); }
   .step.final-step.reveal:hover, .step.final-step.reveal:focus-within { box-shadow: 9px 9px 0 var(--lime); }
-  .reveal .plus::after { content: " ＋"; font-size: .6em; opacity: .6; }
-  .reveal:hover .plus::after, .reveal:focus-within .plus::after { content: " −"; }
+  .reveal .plus::after { content: " ＋"; content: " ＋" / ""; font-size: .6em; opacity: .6; }
+  .reveal:hover .plus::after, .reveal:focus-within .plus::after { content: " −"; content: " −" / ""; }
   .road { align-items: start; }
   @media (prefers-reduced-motion: reduce) {
     .reveal, .reveal .more { transition: none; }
@@ -528,8 +539,8 @@
   .tap.open .more { grid-template-rows: 1fr; }
   .player.tap.open { box-shadow: 8px 8px 0 var(--blue); }
   .player.pitcher.tap.open { box-shadow: 8px 8px 0 var(--pink); }
-  .tap .plus::after { content: " ＋"; font-size: .6em; opacity: .55; }
-  .tap.open .plus::after { content: " −"; }
+  .tap .plus::after { content: " ＋"; content: " ＋" / ""; font-size: .6em; opacity: .55; }
+  .tap.open .plus::after { content: " −"; content: " −" / ""; }
   @media (prefers-reduced-motion: reduce) { .tap, .tap .more { transition: none; } }
 
   /* ===== 전체 선수 기록 표 ===== */
@@ -550,8 +561,8 @@
   .st th button { all: unset; cursor: pointer; }
   .st th button:focus-visible { outline: 2px solid var(--lime); }
   .st th.sorted { background: var(--blue); color: #fff; }
-  .st th.sorted button::after { content: " ▼"; font-size: 10px; }
-  .st th.sorted.asc button::after { content: " ▲"; }
+  .st th.sorted button::after { content: " ▼"; content: " ▼" / ""; font-size: 10px; }
+  .st th.sorted.asc button::after { content: " ▲"; content: " ▲" / ""; }
   .st td.sorted { background: #C4C4C4; font-weight: 900; color: var(--blue); }
   .st th:first-child, .st td:first-child { position: sticky; left: 0; text-align: left; z-index: 1; border-right: 1px solid var(--line); }
   .st td:first-child { background: var(--card); font-weight: 800; color: var(--text); }
@@ -565,7 +576,7 @@
   .ranks { padding: 24px 18px 16px; }
   .ranks .bars { display: grid; grid-template-columns: repeat(17, 1fr); gap: 4px; align-items: end; height: 200px; }
   .ranks .bar { display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; }
-  .ranks .bar i { display: block; width: 100%; max-width: 34px; background: var(--blue); }
+  .ranks .bar i { display: block; flex-shrink: 0; width: 100%; max-width: 34px; background: var(--blue); }
   .ranks .bar.champ i { background: var(--lime); box-shadow: inset 0 0 0 2px #111; }
   .ranks .bar.low i { background: #8A8A8A; }
   .ranks .bar b { font-size: 13px; margin-bottom: 4px; color: #111; }
@@ -674,18 +685,19 @@
   <div class="wrap">
     <p class="kicker" aria-hidden="true">CHAMPIONSHIP RINGS</p>
     <h2>삼성의 우승 역사</h2>
-    <p class="sub">1985년부터 2026년까지 모은 우승 반지 9개</p>
-    <div class="history">
-      <div class="ring">1985</div>
-      <div class="ring">2002</div>
-      <div class="ring">2005</div>
-      <div class="ring">2006</div>
-      <div class="ring">2011</div>
-      <div class="ring">2012</div>
-      <div class="ring">2013</div>
-      <div class="ring">2014</div>
-      <div class="ring now">2026</div>
+    <p class="sub">1985년부터 2026년까지 모은 우승 반지 9개<br>반지를 누르면 상대 팀, 시리즈 전적, 감독이 보여요</p>
+    <div class="history" id="rings">
+      <button type="button" class="ring" data-y="1985" aria-pressed="false">1985</button>
+      <button type="button" class="ring" data-y="2002" aria-pressed="false">2002</button>
+      <button type="button" class="ring" data-y="2005" aria-pressed="false">2005</button>
+      <button type="button" class="ring" data-y="2006" aria-pressed="false">2006</button>
+      <button type="button" class="ring" data-y="2011" aria-pressed="false">2011</button>
+      <button type="button" class="ring" data-y="2012" aria-pressed="false">2012</button>
+      <button type="button" class="ring" data-y="2013" aria-pressed="false">2013</button>
+      <button type="button" class="ring" data-y="2014" aria-pressed="false">2014</button>
+      <button type="button" class="ring now" data-y="2026" aria-pressed="false">2026</button>
     </div>
+    <div class="ring-info card" id="ringInfo" aria-live="polite"></div>
     <p class="note">※ 1985년은 전·후기 통합 우승으로 한국시리즈가 열리지 않았어요.</p>
   </div>
 </section>
@@ -907,7 +919,7 @@
     <h2>한국시리즈 경기별 기록</h2>
     <p class="sub">보고 싶은 경기를 누르면 세부 기록이 펼쳐져요</p>
     <div class="games" id="gameList"></div>
-    <p class="note" style="color:#cfe0ff">R 득점 · H 안타 · E 실책 · B 사사구(볼넷+몸에 맞는 공, 그 팀 타자들이 얻은 수)<br>※ 이닝별 점수와 R·H·E·B는 KBO 공식 스코어보드, 나머지는 언론 보도를 바탕으로 정리했어요.</p>
+    <p class="note" style="color:#E3E6FF">점수는 삼성 점수를 앞에 적었어요.<br>R 득점 · H 안타 · E 실책 · B 사사구(볼넷+몸에 맞는 공, 그 팀 타자들이 얻은 수)<br>※ 이닝별 점수와 R·H·E·B는 KBO 공식 스코어보드, 나머지는 언론 보도를 바탕으로 정리했어요.</p>
   </div>
 </section>
 
@@ -956,11 +968,11 @@
         </div></div>
       </div>
       <div class="player card tap" tabindex="0">
-        <div class="pos">지명타자 · 베테랑</div>
+        <div class="pos">좌익수 · 지명타자 · 베테랑</div>
         <b class="plus">최형우</b>
         <div class="more"><div>
-        <div class="key">40대 베테랑의 힘</div>
-        <p>2차전 2루타, 5차전 적시타로 힘을 보탰어요. 삼성으로 돌아와 우승까지 함께했어요.</p>
+        <div class="key">40대 최고령, 좌익수 수비까지</div>
+        <p>다친 구자욱 대신 1·4차전 등에서 좌익수로 선발 출전했어요. 2차전 2루타, 5차전 적시타로 타석에서도 힘을 보탰어요.</p>
         </div></div>
       </div>
       <div class="player card tap pitcher" tabindex="0">
@@ -992,7 +1004,7 @@
         <b class="plus">김영웅</b>
         <div class="more"><div>
         <div class="key">5차전 5타수 4안타 3타점</div>
-        <p>우승을 확정한 5차전에서 3회 역전 적시타와 8회 쐐기 타점까지 올렸어요.</p>
+        <p>우승을 확정한 5차전에서 디아즈의 역전타 뒤 3회 추가 적시타를 치고, 8회에도 적시타를 보탰어요.</p>
         </div></div>
       </div>
       <div class="player card tap pitcher" tabindex="0">
@@ -1093,6 +1105,30 @@
   }
   draw();
 
+  // ===== 우승 반지: 누르면 상대 팀 · 시리즈 전적 · 감독 =====
+  const RINGS = {
+    1985: ["전·후기 통합 우승", "한국시리즈 없음", "정규시즌 77승 1무 32패 (승률 .706)", "김영덕", "전기·후기 리그를 모두 1위로 마쳐 한국시리즈 없이 우승했어요."],
+    2002: ["첫 한국시리즈 우승", "LG 트윈스", "4승 2패", "김응용", "6차전 9회말 이승엽의 동점 3점 홈런, 마해영의 끝내기 홈런으로 끝냈어요."],
+    2005: ["한국시리즈 우승", "두산 베어스", "4승 0패", "선동열", "감독 첫해, 한 번도 지지 않고 4연승으로 우승했어요."],
+    2006: ["한국시리즈 2연패", "한화 이글스", "4승 1무 1패", "선동열", "2년 연속 한국시리즈 정상에 올랐어요."],
+    2011: ["통합 우승", "SK 와이번스", "4승 1패", "류중일", "감독 첫해에 정규시즌 1위와 한국시리즈 우승을 함께 해냈어요."],
+    2012: ["통합 2연패", "SK 와이번스", "4승 2패", "류중일", "2년 연속 같은 상대 SK를 꺾었어요."],
+    2013: ["통합 3연패", "두산 베어스", "4승 3패", "류중일", "1승 3패로 몰렸다가 3연승으로 뒤집었어요."],
+    2014: ["통합 4연패", "넥센 히어로즈", "4승 2패", "류중일", "KBO 역사상 처음으로 통합 4연패를 이뤘어요."],
+    2026: ["12년 만의 우승 · V9", "KT 위즈", "4승 1패", "박진만", "정규시즌 2위로 올라가 1위 KT를 꺾은 업셋 우승이에요."]
+  };
+  const ringInfo = document.getElementById("ringInfo");
+  const ringBtns = document.querySelectorAll("#rings .ring");
+  function showRing(y) {
+    const [t, opp, rec, mgr, note] = RINGS[y];
+    ringBtns.forEach((b) => { const on = b.dataset.y === String(y); b.classList.toggle("on", on); b.setAttribute("aria-pressed", on); });
+    ringInfo.innerHTML = "<div class='ri-y'>" + y + "</div><div class='ri-t'>" + t + "</div>" +
+      "<dl><dt>상대 팀</dt><dd>" + opp + "</dd><dt>전적</dt><dd>" + rec + "</dd><dt>감독</dt><dd>" + mgr + "</dd></dl>" +
+      "<p class='ri-n'>" + note + "</p>";
+  }
+  ringBtns.forEach((b) => b.addEventListener("click", () => showRing(b.dataset.y)));
+  showRing(2026);
+
   // ===== 정규시즌 순위 그래프 =====
   // [연도, 순위, 결과]  결과: 'c' = 우승, 'p' = 가을야구, 'x' = 가을야구 실패
   const seasons = [
@@ -1106,7 +1142,7 @@
     const d = document.createElement("div");
     d.className = "bar" + (k === "c" ? " champ" : k === "x" ? " low" : "");
     d.title = y + "년 정규시즌 " + r + "위" + (k === "c" ? " · 한국시리즈 우승" : "");
-    d.innerHTML = "<b>" + r + "위</b><i style='height:" + ((11 - r) * 10) + "%'></i>";
+    d.innerHTML = "<b>" + r + "위</b><i style='height:" + ((11 - r) * 8.5) + "%'></i>";
     bars.appendChild(d);
     const t = document.createElement("span");
     t.textContent = "'" + String(y).slice(2);
@@ -1240,7 +1276,7 @@
     const el = document.createElement("details");
     el.className = "gm" + (g.champ ? " champ" : "");
     el.innerHTML =
-      "<summary>" + g.no + "</summary>" +
+      "<summary><span>" + g.no + " · " + sScore + ":" + oScore + " " + (g.win ? "승" : "패") + "</span></summary>" +
       "<div class='gm-body'>" +
         "<div class='gm-top'><span class='when'>" + g.when + "</span>" +
         "<span class='score'>삼성 " + (g.win ? "<span class='s'>" + sScore + "</span>" : sScore) + " : " +
@@ -1274,7 +1310,7 @@
   // ===== 전체 선수 기록 (한국시리즈 5경기 합계) =====
   // 타자: [선수, 타수, 안타, 홈런, 사사구, 삼진, 도루, 타점, 득점, 타율, 출루율, 장타율]
   const BAT = [
-    ["디아즈",22,7,0,2,5,0,4,4,.318,.375,.455], ["구자욱",20,10,1,4,3,0,6,5,.500,.565,.850],
+    ["디아즈",22,7,0,2,5,0,4,4,.318,.375,.455], ["구자욱",20,10,1,3,3,0,6,5,.500,.565,.850],
     ["김지찬",18,5,0,6,2,0,2,6,.278,.458,.389], ["이재현",17,3,0,6,6,0,3,4,.176,.391,.235],
     ["김영웅",17,7,0,1,4,0,4,3,.412,.444,.412], ["박승규",16,8,1,2,2,0,4,6,.500,.556,.750],
     ["류지혁",15,1,0,7,2,0,2,4,.067,.333,.067], ["최형우",14,5,0,0,3,0,2,1,.357,.357,.429],
@@ -1324,7 +1360,7 @@
     const rows = T.rows.slice();
     if (sortKey === "선수") rows.sort((a, b) => (asc ? -1 : 1) * a.선수.localeCompare(b.선수, "ko"));
     else if (sortKey) rows.sort((a, b) => asc ? a[sortKey] - b[sortKey] : b[sortKey] - a[sortKey]);
-    const thCls = (k) => sortKey === k ? " class='sorted" + (asc ? " asc" : "") + "'" : "";
+    const thCls = (k) => sortKey === k ? " class='sorted" + (asc ? " asc" : "") + "' aria-sort='" + (asc ? "ascending" : "descending") + "'" : "";
     let h = "<thead><tr><th" + thCls("선수") + "><button type='button' data-k='선수'>선수</button></th>";
     for (const [k, tip] of T.cols) h += "<th" + thCls(k) + (tip ? " title='" + tip + "'" : "") + "><button type='button' data-k='" + k + "'>" + k + "</button></th>";
     h += "</tr></thead><tbody>";
