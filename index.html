@@ -9,13 +9,14 @@
 <style>
   /* ===== 색: 집 파일 디자인 (검정 배경 · 전기 파랑 · 회색 종이 · 형광 분홍 · 형광 연두) ===== */
   :root {
-    --blue: #1B2CF5;
+    --blue: #1828DC;
     --blue-dark: #111111;
-    --sky: #1B2CF5;
-    --gold: #6BFF4A;
+    --sky: #1828DC;
+    --gold: #F2D04B;
     --red: #FF2E9A;
     --pink: #FF2E9A;
-    --lime: #6BFF4A;
+    --lime: #F2D04B;   /* 강조·우승 노랑: 파랑 위 대비 5.1:1, 검정 위 12.5:1 */
+    --hero-lime: #6BFF4A; /* 첫 화면 제목에만 쓰는 연두 */
     --paper: #D8D8D8;
     --bg: #0B0B0B;
     --card: #D8D8D8;
@@ -152,7 +153,7 @@
   }
   .hero h1 span { display: block; paint-order: stroke fill; }
   .hero h1 .h1a { color: var(--paper); -webkit-text-stroke: clamp(8px, 1.2vw, 16px) var(--blue); transform: rotate(-2deg); }
-  .hero h1 .h1b { color: #111; -webkit-text-stroke: clamp(8px, 1.2vw, 16px) var(--lime); transform: rotate(-3deg); margin-top: .1em; }
+  .hero h1 .h1b { color: #111; -webkit-text-stroke: clamp(8px, 1.2vw, 16px) var(--hero-lime); transform: rotate(-3deg); margin-top: .1em; }
   .h-tape {
     display: inline-block;
     margin-top: 30px;
@@ -199,7 +200,7 @@
     font-size: clamp(110px, 13vw, 190px);
     line-height: .9;
     color: #111;
-    -webkit-text-stroke: clamp(10px, 1.4vw, 22px) var(--lime);
+    -webkit-text-stroke: clamp(10px, 1.4vw, 22px) var(--hero-lime);
     paint-order: stroke fill;
     transform: rotate(9deg);
   }
@@ -248,13 +249,18 @@
   }
   .menu .feature.hot:hover, .menu .feature.hot:focus-visible { box-shadow: 9px 9px 0 var(--lime); }
   .feature .icon {
-    width: 56px; height: 56px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 28px;
-    background: #111;
-    margin-bottom: 16px;
+    display: inline-flex; align-self: flex-start;
+    font-size: 40px; line-height: 1;
+    background: transparent;
+    margin-bottom: 12px;
     transition: transform .2s ease;
   }
+  .feature .icon svg {
+    width: 56px; height: 56px; display: block;
+    transform: rotate(-6deg);
+    filter: drop-shadow(4px 4px 0 var(--blue));
+  }
+  .menu .feature.hot .icon svg { filter: drop-shadow(4px 4px 0 #111); }
   .feature:hover .icon { transform: rotate(-8deg) scale(1.08); }
   .feature h3 { font-family: "Black Han Sans", sans-serif; font-weight: 400; font-size: 30px; line-height: 1.15; color: var(--blue); margin-bottom: 6px; }
   .feature p { font-size: 15px; color: #333; }
@@ -348,7 +354,7 @@
   .ls th { font-size: 12px; opacity: .7; font-weight: 700; }
   .ls td:first-child, .ls th:first-child { text-align: left; font-weight: 800; padding-left: 12px; }
   .ls td.r { font-weight: 900; color: var(--lime); border-left: 1px solid #ffffff33; }
-  .ls td.hit { color: #fff; font-weight: 900; background: #1B2CF5aa; }
+  .ls td.hit { color: #fff; font-weight: 900; background: #1828DCaa; }
   .ls tr + tr td { border-top: 1px solid #ffffff1a; }
   .ls td.k { border-left: 1px solid #ffffff33; font-weight: 700; }
   .ls th.k { border-left: 1px solid #ffffff33; }
@@ -624,37 +630,37 @@
   <div class="wrap">
     <div class="menu">
       <a class="feature card" href="#history" data-title="우승 반지">
-        <div class="icon">💍</div>
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="38" r="16" fill="none" stroke="#111" stroke-width="12"/><circle cx="32" cy="38" r="16" fill="none" stroke="#F2D04B" stroke-width="5"/><path d="M22 13h20l7 8-17 15-17-15z" fill="#FF2E9A" stroke="#111" stroke-width="3.5" stroke-linejoin="round"/><path d="M15 21h34M27 13l-4 8 9 15 9-15-4-8" fill="none" stroke="#111" stroke-width="2.5" stroke-linejoin="round"/></svg></div>
         <span class="tag">1985 – 2026</span>
         <h3>우승 반지</h3>
         <p>1985년부터 2026년까지 모은 우승 반지 9개</p>
       </a>
       <a class="feature card" href="#story" data-title="우승 연대기">
-        <div class="icon">📜</div>
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M14 8v48" stroke="#111" stroke-width="5"/><rect x="7" y="7" width="14" height="14" fill="#F2D04B" stroke="#111" stroke-width="3.5"/><rect x="7" y="25" width="14" height="14" fill="#1828DC" stroke="#111" stroke-width="3.5"/><rect x="7" y="43" width="14" height="14" fill="#FF2E9A" stroke="#111" stroke-width="3.5"/><rect x="27" y="10" width="30" height="8" fill="#111"/><rect x="27" y="28" width="21" height="8" fill="#111"/><rect x="27" y="46" width="27" height="8" fill="#111"/></svg></div>
         <span class="tag">일곱 장면</span>
         <h3>우승 연대기</h3>
         <p>창단부터 V9까지, 삼성의 45년을 일곱 장면으로</p>
       </a>
       <a class="feature card" href="#ranks" data-title="정규시즌 순위 변화">
-        <div class="icon">📈</div>
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><g stroke="#111" stroke-width="3.5" stroke-linejoin="round"><rect x="7" y="30" width="11" height="24" fill="#1828DC"/><rect x="20" y="14" width="11" height="40" fill="#F2D04B"/><rect x="33" y="40" width="11" height="14" fill="#8A8A8A"/><rect x="46" y="7" width="11" height="47" fill="#F2D04B"/></g><path d="M3 56h58" stroke="#111" stroke-width="5"/></svg></div>
         <span class="tag">2010 – 2026</span>
         <h3>순위 변화</h3>
         <p>왕조에서 암흑기, 다시 정상까지 한눈에</p>
       </a>
       <a class="feature card hot" href="#season2026" data-title="2026 우승 한눈에">
-        <div class="icon">🏆</div>
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><g fill="none" stroke="#111" stroke-width="4" stroke-linejoin="round"><path d="M18 13H9v5c0 8 5 13 12 13"/><path d="M46 13h9v5c0 8-5 13-12 13"/></g><path d="M17 7h30v15c0 10-7 17-15 17s-15-7-15-17z" fill="#F2D04B" stroke="#111" stroke-width="3.5" stroke-linejoin="round"/><rect x="28" y="38" width="8" height="9" fill="#111"/><rect x="17" y="46" width="30" height="10" fill="#D8D8D8" stroke="#111" stroke-width="3.5"/></svg></div>
         <span class="tag">V9</span>
         <h3>2026 우승 한눈에</h3>
         <p>숫자로 보는 우승과 포스트시즌 7승 3패의 길</p>
       </a>
       <a class="feature card" href="#games" data-title="한국시리즈 경기별 기록">
-        <div class="icon">⚾</div>
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="24" fill="#D8D8D8" stroke="#111" stroke-width="4"/><path d="M19 12c7 10 7 30 0 40M45 12c-7 10-7 30 0 40" fill="none" stroke="#FF2E9A" stroke-width="4" stroke-dasharray="4 3"/></svg></div>
         <span class="tag">1 – 5차전</span>
         <h3>경기 기록</h3>
         <p>한국시리즈 이닝별 점수와 득점 장면</p>
       </a>
       <a class="feature card" href="#players" data-title="선수별 기록">
-        <div class="icon">⭐</div>
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 5l8 17 19 2-14 13 4 19-17-10-17 10 4-19L5 24l19-2z" fill="#FF2E9A" stroke="#111" stroke-width="3.5" stroke-linejoin="round"/></svg></div>
         <span class="tag">MVP 구자욱</span>
         <h3>선수별 기록</h3>
         <p>MVP 구자욱과 우승 주역들, 그리고 전체 선수 기록</p>
@@ -915,7 +921,7 @@
     <div class="players">
       <div class="mvp card tap big" tabindex="0">
         <div>
-          <span class="mvp-badge">⭐ 한국시리즈 MVP</span>
+          <span class="mvp-badge">한국시리즈 MVP</span>
           <div class="mvp-name plus">구자욱</div>
           <p class="mvp-role">주장 · 외야수</p>
           <p class="mvp-line">타율 <b>.500</b> · 5경기 연속 안타 · 생애 첫 KS MVP</p>
@@ -1040,7 +1046,7 @@
   // ===== 꽃가루(색종이) 효과 =====
   const canvas = document.getElementById("confetti");
   const ctx = canvas.getContext("2d");
-  const colors = ["#1B2CF5", "#FF2E9A", "#6BFF4A", "#D8D8D8"];
+  const colors = ["#1828DC", "#FF2E9A", "#6BFF4A", "#D8D8D8", "#FFE94D"];
   let pieces = [];
 
   const hero = document.querySelector(".hero");
