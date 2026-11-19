@@ -5,32 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>삼성 라이온즈 우승 기록</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@700&family=Big+Shoulders+Display:wght@900&family=Black+Han+Sans&family=Grenze+Gotisch:wght@900&family=Noto+Sans+KR:wght@400;700;800;900&family=Rubik:wght@900&family=Silkscreen:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Graduate&family=Noto+Sans+KR:wght@400;700;800;900&family=Yellowtail&display=swap" rel="stylesheet">
 <style>
-  /* ===== 색: 집 파일 디자인 (검정 배경 · 전기 파랑 · 회색 종이 · 형광 분홍 · 형광 연두) ===== */
+  /* ===== 색: 삼성 라이온즈 홈 유니폼 (흰 바탕 · 라이온즈 파랑 · 남색 글씨 · 우승 금색) ===== */
   :root {
-    --blue: #1828DC;
-    --blue-dark: #111111;
-    --sky: #1828DC;
-    --gold: #F2D04B;
-    --red: #FF2E9A;
-    --pink: #FF2E9A;
-    --lime: #F2D04B;   /* 강조·우승 노랑: 파랑 위 대비 5.1:1, 검정 위 12.5:1 */
-    --hero-lime: #6BFF4A; /* 첫 화면 제목에만 쓰는 연두 */
-    --paper: #D8D8D8;
-    --bg: #0B0B0B;
-    --card: #D8D8D8;
-    --line: #B3B3B3;
-    --text: #111111;
-    --muted: #444444;
-    --dim: #A9A9A9;
+    --blue: #074CA1;      /* 라이온즈 파랑 */
+    --blue-dark: #0A2A66;
+    --ink: #0A2A66;       /* 남색: 글씨·테두리 */
+    --sky: #E8F0FB;       /* 아주 연한 하늘색 바탕 */
+    --sky-line: #CFDDF3;
+    --gold: #FFC93C;
+    --red: #D7263D;
+    --pink: #D7263D;      /* 패배 표시용 빨강 */
+    --lime: #FFC93C;      /* 우승 금색 */
+    --hero-lime: #074CA1;
+    --paper: #FFFFFF;
+    --bg: #FFFFFF;
+    --card: #FFFFFF;
+    --line: #D5DEEC;
+    --text: #0A2A66;
+    --muted: #4A5A75;
+    --dim: #5E6B82;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
     font-family: "Noto Sans KR", sans-serif;
     background: var(--bg);
-    color: var(--paper);
+    color: var(--text);
     line-height: 1.6;
     overflow-x: hidden;
   }
@@ -39,20 +41,20 @@
 
   /* ===== 제목: 굵은 테두리 스티커 글씨 ===== */
   .kicker {
-    font-family: "Silkscreen", monospace;
-    font-weight: 700;
+    font-family: "Graduate", serif;
+    font-weight: 400;
     font-size: clamp(18px, 3vw, 26px);
     line-height: 1;
     letter-spacing: 2px;
-    color: #111;
-    -webkit-text-stroke: 6px var(--pink);
+    color: #fff;
+    -webkit-text-stroke: 6px var(--blue);
     paint-order: stroke fill;
     text-align: center;
     margin-bottom: 14px;
   }
-  .kicker.lime { -webkit-text-stroke-color: var(--lime); }
+  .kicker.lime { color: var(--ink); -webkit-text-stroke-color: var(--lime); }
   h2 {
-    font-family: "Black Han Sans", sans-serif;
+    font-family: "Do Hyeon", sans-serif;
     font-weight: 400;
     font-size: clamp(36px, 6vw, 58px);
     line-height: 1.1;
@@ -67,7 +69,7 @@
     background: var(--card);
     color: var(--text);
     border-radius: 0;
-    border: 3px solid #111;
+    border: 3px solid var(--blue);
   }
 
   [hidden] { display: none !important; }
@@ -77,18 +79,18 @@
     position: sticky; top: 0; z-index: 10;
     background: var(--bg);
     border-bottom: 4px solid var(--blue);
-    color: var(--paper);
+    color: var(--ink);
   }
   .backbar .wrap { display: flex; align-items: center; gap: 14px; padding: 10px 16px; }
   .backbar .back {
-    color: #111; text-decoration: none; font-weight: 800; font-size: 15px;
-    padding: 7px 14px; background: var(--paper);
+    color: #fff; text-decoration: none; font-weight: 800; font-size: 15px;
+    padding: 7px 14px; background: var(--blue);
     white-space: nowrap;
     transform: rotate(-2deg);
   }
-  .backbar .back:hover, .backbar .back:focus-visible { background: var(--lime); outline: none; }
+  .backbar .back:hover, .backbar .back:focus-visible { background: var(--lime); color: var(--ink); outline: none; }
   .backbar .now {
-    font-family: "Black Han Sans", sans-serif; font-size: 20px;
+    font-family: "Do Hyeon", sans-serif; font-size: 20px;
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
   body.detail [data-view] { padding-top: 48px !important; }
@@ -104,8 +106,8 @@
     align-items: center;
     justify-content: center;
     padding: 56px 16px 72px;
-    background: var(--bg);
-    color: var(--paper);
+    background: linear-gradient(180deg, #fff 0%, #fff 62%, var(--sky) 100%);
+    color: var(--ink);
   }
   #confetti {
     position: absolute;
@@ -123,28 +125,28 @@
     align-items: center;
   }
   .h-goth {
-    font-family: "Grenze Gotisch", serif;
-    font-weight: 900;
+    font-family: "Yellowtail", cursive; letter-spacing: -.01em;
+    font-weight: 400;
     font-size: clamp(100px, 16vw, 220px);
     line-height: .85;
-    color: #111;
+    color: #fff;
     -webkit-text-stroke: clamp(10px, 1.5vw, 22px) var(--blue);
     paint-order: stroke fill;
     transform: rotate(-4deg);
   }
   .h-pixel {
-    font-family: "Silkscreen", monospace;
-    font-weight: 700;
+    font-family: "Graduate", serif;
+    font-weight: 400;
     font-size: clamp(32px, 5.2vw, 68px);
     line-height: 1;
-    color: #111;
-    -webkit-text-stroke: clamp(8px, 1vw, 14px) var(--pink);
+    color: #fff;
+    -webkit-text-stroke: clamp(8px, 1vw, 14px) var(--ink);
     paint-order: stroke fill;
     transform: rotate(-3deg);
     margin: 4px 0 0 8%;
   }
   .hero h1 {
-    font-family: "Black Han Sans", sans-serif;
+    font-family: "Do Hyeon", sans-serif;
     font-weight: 400;
     font-size: clamp(46px, 7.4vw, 96px);
     line-height: 1.05;
@@ -152,43 +154,44 @@
   }
   .hero h1 span { display: block; paint-order: stroke fill; }
   .hero h1 .h1a { color: var(--paper); -webkit-text-stroke: clamp(8px, 1.2vw, 16px) var(--blue); transform: rotate(-2deg); }
-  .hero h1 .h1b { color: #111; -webkit-text-stroke: clamp(8px, 1.2vw, 16px) var(--lime); transform: rotate(-3deg); margin-top: .1em; }
+  .hero h1 .h1b { color: var(--blue); -webkit-text-stroke: clamp(8px, 1.2vw, 16px) var(--sky-line); transform: rotate(-3deg); margin-top: .1em; }
   .h-right { position: relative; display: flex; flex-direction: column; align-items: center; padding: 30px 0 0; }
   .h-paper {
     width: min(100%, 380px);
-    background: var(--paper);
-    color: var(--blue);
+    background: var(--blue);
+    color: #fff;
     padding: 30px 28px 34px;
+    box-shadow: 10px 10px 0 var(--ink);
     transform: rotate(4deg);
   }
   .h-paper .a {
-    font-family: "Rubik", sans-serif; font-weight: 900;
-    font-size: clamp(62px, 7.6vw, 110px); line-height: .9; letter-spacing: -4px;
+    font-family: "Graduate", serif; font-weight: 400;
+    font-size: clamp(44px, 5.4vw, 76px); line-height: .95; letter-spacing: 0;
   }
-  .h-paper .line { height: 6px; background: var(--blue); margin: 20px 0 14px; }
+  .h-paper .line { height: 6px; background: #fff; margin: 20px 0 14px; }
   .h-paper .c {
-    font-family: "Big Shoulders Display", sans-serif; font-weight: 900;
-    font-size: clamp(36px, 4.2vw, 58px); line-height: .95;
+    font-family: "Graduate", serif; font-weight: 400;
+    font-size: clamp(22px, 2.6vw, 34px); line-height: 1.1;
   }
   .h-sticker {
     position: absolute; left: -6px; top: 0;
-    background: var(--pink);
-    box-shadow: 0 0 0 6px #111;
+    background: #fff;
+    box-shadow: 0 0 0 6px var(--blue);
     padding: 10px 14px;
-    font-family: "Silkscreen", monospace; font-weight: 700;
+    font-family: "Graduate", serif; font-weight: 400;
     font-size: clamp(16px, 2vw, 26px); line-height: 1.05;
-    color: #111;
+    color: var(--blue);
     transform: rotate(-8deg);
   }
   .h-v9 {
     align-self: flex-end;
     margin: .12em -.04em 0 0;
-    font-family: "Rubik", sans-serif; font-weight: 900;
-    font-size: clamp(170px, 21vw, 300px);
+    font-family: "Graduate", serif; font-weight: 400;
+    font-size: clamp(150px, 18vw, 260px);
     line-height: .8;
-    letter-spacing: -.06em;
-    color: #111;
-    -webkit-text-stroke: clamp(12px, 1.6vw, 24px) var(--hero-lime);
+    letter-spacing: -.02em;
+    color: var(--blue);
+    -webkit-text-stroke: clamp(12px, 1.6vw, 24px) var(--sky-line);
     paint-order: stroke fill;
     transform: rotate(-6deg);
   }
@@ -197,18 +200,18 @@
     position: fixed; left: 50%; bottom: 18px; z-index: 5;
     width: 56px; height: 40px; margin-left: -28px;
     display: flex; align-items: center; justify-content: center;
-    color: var(--paper);
+    color: var(--blue);
     animation: hint-bounce 1.8s ease-in-out infinite, hint-glow 1.8s ease-in-out infinite;
   }
   .scroll-hint svg { width: 44px; height: 24px; }
   .scroll-hint.gone { visibility: hidden; opacity: 0 !important; transition: opacity .3s, visibility .3s; }
   .scroll-hint path { fill: none; stroke: currentColor; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
-  .scroll-hint path.edge { stroke: #111; stroke-width: 9; }
+  .scroll-hint path.edge { stroke: #fff; stroke-width: 9; }
   .scroll-hint:hover, .scroll-hint:focus-visible { color: var(--lime); outline: none; }
   @keyframes hint-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(9px); } }
   @keyframes hint-glow {
     0%, 100% { opacity: .35; filter: drop-shadow(0 0 0 transparent); }
-    50% { opacity: .9; filter: drop-shadow(0 0 6px rgba(216,216,216,.7)); }
+    50% { opacity: .9; filter: drop-shadow(0 0 6px rgba(7,76,161,.45)); }
   }
   @media (prefers-reduced-motion: reduce) { .scroll-hint { animation: none; opacity: .7; } }
   @media (max-width: 760px) {
@@ -235,13 +238,13 @@
     align-self: flex-start;
     font-size: 12px; font-weight: 900;
     padding: 3px 10px;
-    background: #111; color: var(--paper);
+    background: var(--blue); color: #fff;
     margin-bottom: 10px;
   }
-  .menu .feature.hot { background: var(--blue); }
-  .menu .feature.hot h3 { color: var(--paper); -webkit-text-stroke: 5px #111; paint-order: stroke fill; }
+  .menu .feature.hot { background: var(--blue); border-color: var(--ink); }
+  .menu .feature.hot h3 { color: var(--paper); -webkit-text-stroke: 5px var(--ink); paint-order: stroke fill; }
   .menu .feature.hot p { color: #E3E6FF; }
-  .menu .feature.hot .tag { background: var(--lime); color: #111; }
+  .menu .feature.hot .tag { background: var(--lime); color: var(--ink); }
 
   .feature {
     display: block;
@@ -269,10 +272,10 @@
     transform: rotate(-6deg);
     filter: drop-shadow(4px 4px 0 var(--blue));
   }
-  .menu .feature.hot .icon svg { filter: drop-shadow(4px 4px 0 #111); }
+  .menu .feature.hot .icon svg { filter: drop-shadow(4px 4px 0 var(--ink)); }
   .feature:hover .icon { transform: rotate(-8deg) scale(1.08); }
-  .feature h3 { font-family: "Black Han Sans", sans-serif; font-weight: 400; font-size: 30px; line-height: 1.15; color: var(--blue); margin-bottom: 6px; }
-  .feature p { font-size: 15px; color: #333; }
+  .feature h3 { font-family: "Do Hyeon", sans-serif; font-weight: 400; font-size: 30px; line-height: 1.15; color: var(--blue); margin-bottom: 6px; }
+  .feature p { font-size: 15px; color: var(--muted); }
   @media (prefers-reduced-motion: reduce) {
     .feature, .feature .icon { transition: none; }
     .feature:hover .icon { transform: none; }
@@ -285,8 +288,8 @@
     gap: 20px;
   }
   .stat { padding: 26px 16px; text-align: center; }
-  .stat .num { font-family: "Black Han Sans", sans-serif; font-size: 48px; line-height: 1.2; color: var(--blue); }
-  .stat .label { color: #333; font-weight: 700; }
+  .stat .num { font-family: "Do Hyeon", sans-serif; font-size: 48px; line-height: 1.2; color: var(--blue); }
+  .stat .label { color: var(--muted); font-weight: 700; }
 
   /* ===== 포스트시즌 여정 ===== */
   .road {
@@ -299,23 +302,23 @@
     display: inline-block;
     font-size: 13px; font-weight: 900;
     padding: 4px 12px;
-    background: #111; color: var(--paper);
+    background: var(--ink); color: var(--paper);
     margin-bottom: 10px;
   }
   .step.final-step { background: var(--blue); color: var(--paper); }
-  .step.final-step .tag { background: var(--lime); color: #111; }
-  .step h3 { font-family: "Black Han Sans", sans-serif; font-weight: 400; font-size: 28px; line-height: 1.2; margin-bottom: 4px; }
-  .step .big { font-family: "Black Han Sans", sans-serif; font-size: 34px; color: var(--blue); }
+  .step.final-step .tag { background: var(--lime); color: var(--ink); }
+  .step h3 { font-family: "Do Hyeon", sans-serif; font-weight: 400; font-size: 28px; line-height: 1.2; margin-bottom: 4px; }
+  .step .big { font-family: "Do Hyeon", sans-serif; font-size: 34px; color: var(--blue); }
   .step.final-step .big { color: var(--lime); }
   .step p { font-size: 15px; opacity: .9; margin-top: 8px; }
   .mini { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
   .mini span { font-size: 13px; font-weight: 700; padding: 3px 9px; }
-  .w { background: var(--lime); color: #111; }
-  .l { background: var(--pink); color: #111; }
+  .w { background: var(--lime); color: var(--ink); }
+  .l { background: var(--pink); color: #fff; }
 
   /* ===== 한국시리즈 경기 기록 (파란 판) ===== */
   .final { background: var(--blue); color: var(--paper); }
-  .final h2 { -webkit-text-stroke-color: #111; }
+  .final h2 { -webkit-text-stroke-color: var(--ink); }
   .final .sub { color: #E3E6FF; }
   .final .kicker { -webkit-text-stroke-color: var(--lime); }
   .games { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
@@ -326,15 +329,15 @@
     margin-left: 6px; vertical-align: middle;
     font-family: "Noto Sans KR", sans-serif;
   }
-  .badge.win { background: var(--lime); color: #111; }
+  .badge.win { background: var(--lime); color: var(--ink); }
   .badge.lose { background: #ffffff33; color: #fff; }
 
   /* ===== 경기별 상세 기록 ===== */
-  .gm { background: #111; border: 3px solid #111; padding: 0; color: var(--paper); }
+  .gm { background: var(--ink); border: 3px solid var(--ink); padding: 0; color: var(--paper); }
   .gm > summary {
     list-style: none; cursor: pointer; padding: 16px 20px;
     display: flex; align-items: center; justify-content: space-between;
-    font-family: "Black Han Sans", sans-serif; font-weight: 400; font-size: 26px;
+    font-family: "Do Hyeon", sans-serif; font-weight: 400; font-size: 26px;
   }
   .gm > summary::-webkit-details-marker { display: none; }
   .gm > summary::after { content: "▼"; content: "▼" / ""; font-size: 14px; opacity: .7; transition: transform .25s ease; }
@@ -350,13 +353,13 @@
   .gm .team.ss { background: var(--blue); color: #fff; }
   .gm .pn { font-weight: 900; color: #fff; font-size: 15px; }
   .gm .rec { color: #B5B5B5; font-size: 13.5px; }
-  .gm .plays b.sc { color: var(--lime); font-family: "Black Han Sans", sans-serif; font-weight: 400; font-size: 17px; letter-spacing: .5px; white-space: nowrap; }
+  .gm .plays b.sc { color: var(--lime); font-family: "Do Hyeon", sans-serif; font-weight: 400; font-size: 17px; letter-spacing: .5px; white-space: nowrap; }
   .gm .plays-box { margin-top: 12px; background: #ffffff10; padding: 12px 14px; }
   .gm .plays-box h4 { font-size: 13px; color: var(--lime); margin-bottom: 4px; }
-  .gm.champ { border-color: var(--lime); box-shadow: 8px 8px 0 #111; }
+  .gm.champ { border-color: var(--lime); box-shadow: 8px 8px 0 var(--ink); }
   .gm-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
   .gm-top .when { font-size: 13px; opacity: .75; }
-  .gm-top .score { margin-left: auto; font-family: "Black Han Sans", sans-serif; font-size: 30px; white-space: nowrap; }
+  .gm-top .score { margin-left: auto; font-family: "Do Hyeon", sans-serif; font-size: 30px; white-space: nowrap; }
   .gm-top .score .s { color: var(--lime); }
   .gm-title { font-size: 17px; font-weight: 800; margin: 8px 0 12px; color: #fff; }
   .ls-wrap { overflow-x: auto; background: #ffffff10; }
@@ -365,7 +368,7 @@
   .ls th { font-size: 12px; opacity: .7; font-weight: 700; }
   .ls td:first-child, .ls th:first-child { text-align: left; font-weight: 800; padding-left: 12px; }
   .ls td.r { font-weight: 900; color: var(--lime); border-left: 1px solid #ffffff33; }
-  .ls td.hit { color: #fff; font-weight: 900; background: #1828DCaa; }
+  .ls td.hit { color: #fff; font-weight: 900; background: #074CA1aa; }
   .ls tr + tr td { border-top: 1px solid #ffffff1a; }
   .ls td.k { border-left: 1px solid #ffffff33; font-weight: 700; }
   .ls th.k { border-left: 1px solid #ffffff33; }
@@ -416,14 +419,14 @@
   .mvp-badge {
     align-self: flex-start;
     display: inline-block;
-    background: var(--lime); color: #111;
+    background: var(--lime); color: var(--ink);
     font-weight: 900; padding: 6px 16px;
   }
   .mvp-name {
-    font-family: "Black Han Sans", sans-serif; font-weight: 400;
+    font-family: "Do Hyeon", sans-serif; font-weight: 400;
     font-size: clamp(60px, 8vw, 88px); line-height: 1.1;
     color: var(--paper);
-    -webkit-text-stroke: clamp(8px, 1vw, 12px) #111;
+    -webkit-text-stroke: clamp(8px, 1vw, 12px) var(--ink);
     paint-order: stroke fill;
     margin-top: 16px;
   }
@@ -440,7 +443,7 @@
     margin-top: 18px;
   }
   .mvp-stats div { background: rgba(0,0,0,.3); padding: 12px 6px; text-align: center; }
-  .mvp-stats b { display: block; font-family: "Black Han Sans", sans-serif; font-size: 30px; color: var(--lime); }
+  .mvp-stats b { display: block; font-family: "Do Hyeon", sans-serif; font-size: 30px; color: var(--lime); }
   .mvp-stats small { color: #E3E6FF; font-weight: 700; }
   .mvp-note { color: #E3E6FF; font-size: 15px; margin-top: 14px; }
   .mvp.tap .plus::after { opacity: .8; }
@@ -448,9 +451,9 @@
   .player { padding: 20px 22px; border-left: 10px solid var(--blue); }
   .player.pitcher { border-left-color: var(--pink); }
   .player .pos { font-size: 13px; font-weight: 900; color: var(--muted); }
-  .player b { font-family: "Black Han Sans", sans-serif; font-weight: 400; font-size: 28px; color: var(--blue); }
+  .player b { font-family: "Do Hyeon", sans-serif; font-weight: 400; font-size: 28px; color: var(--blue); }
   .player .key { font-weight: 900; margin: 6px 0; }
-  .player p { color: #333; font-size: 15px; }
+  .player p { color: var(--muted); font-size: 15px; }
 
   /* ===== 우승 반지 ===== */
   .history { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
@@ -458,28 +461,28 @@
     width: 96px; height: 96px;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-family: "Rubik", sans-serif; font-weight: 900;
-    font-size: 24px; letter-spacing: -1px;
+    font-family: "Graduate", serif; font-weight: 400;
+    font-size: 20px; letter-spacing: 0;
     background: var(--paper);
     color: var(--blue);
     border: 5px solid var(--blue);
   }
   .ring.now {
-    background: var(--lime); border-color: #111; color: #111;
+    background: var(--lime); border-color: var(--ink); color: var(--ink);
     transform: scale(1.2);
-    box-shadow: 0 0 0 6px var(--pink);
+    box-shadow: 0 0 0 6px var(--blue);
   }
-  .ring { font-family: "Rubik", sans-serif; cursor: pointer; }
+  .ring { font-family: "Graduate", serif; cursor: pointer; }
   .ring:hover, .ring:focus-visible { outline: none; box-shadow: 0 0 0 5px var(--lime); }
-  .ring.on { background: var(--blue); color: #fff; border-color: #111; box-shadow: 0 0 0 5px var(--lime); }
-  .ring.now.on { background: var(--lime); color: #111; box-shadow: 0 0 0 6px var(--pink), 0 0 0 11px #111; }
+  .ring.on { background: var(--blue); color: #fff; border-color: var(--ink); box-shadow: 0 0 0 5px var(--lime); }
+  .ring.now.on { background: var(--lime); color: var(--ink); box-shadow: 0 0 0 6px var(--blue), 0 0 0 11px var(--ink); }
   .ring-info { max-width: 620px; margin: 34px auto 0; padding: 22px 24px; }
-  .ring-info .ri-y { font-family: "Black Han Sans", sans-serif; font-size: 34px; line-height: 1.1; color: var(--blue); }
+  .ring-info .ri-y { font-family: "Do Hyeon", sans-serif; font-size: 34px; line-height: 1.1; color: var(--blue); }
   .ring-info .ri-t { font-weight: 800; margin-top: 2px; }
   .ring-info dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; margin-top: 14px; }
-  .ring-info dt { font-size: 13px; font-weight: 900; background: #111; color: var(--paper); padding: 2px 10px; align-self: start; }
+  .ring-info dt { font-size: 13px; font-weight: 900; background: var(--ink); color: var(--paper); padding: 2px 10px; align-self: start; }
   .ring-info dd { font-weight: 700; }
-  .ring-info .ri-n { margin-top: 12px; color: #333; font-size: 15px; }
+  .ring-info .ri-n { margin-top: 12px; color: var(--muted); font-size: 15px; }
   .note { text-align: center; color: var(--dim); font-size: 14px; margin-top: 20px; }
 
   /* ===== 우승 연대기 ===== */
@@ -487,7 +490,7 @@
   .timeline::before {
     content: ""; position: absolute; left: 11px; top: 8px; bottom: 8px;
     width: 5px;
-    background: linear-gradient(var(--lime), var(--blue) 20%, var(--lime) 40%, var(--lime) 55%, #555 65%, #555 80%, var(--lime));
+    background: linear-gradient(var(--lime), var(--blue) 20%, var(--lime) 40%, var(--lime) 55%, #8A93A3 65%, #8A93A3 80%, var(--lime));
   }
   .era { padding: 24px 24px 22px; position: relative; border-top-width: 8px; border-top-color: var(--blue); }
   .era::before {
@@ -496,21 +499,21 @@
     background: var(--paper); border: 4px solid var(--blue);
   }
   .era.gold { border-top-color: var(--lime); }
-  .era.gold::before { background: var(--lime); border-color: #111; }
-  .era.dark { border-top-color: #555; background: #9E9E9E; }
-  .era.dark::before { border-color: #555; }
-  .era .yrs { display: inline-block; font-size: 13px; font-weight: 900; padding: 4px 12px; background: #111; color: var(--paper); }
-  .era.gold .yrs { background: var(--lime); color: #111; }
-  .era.dark .yrs { background: #555; color: var(--paper); }
-  .era h3 { font-family: "Black Han Sans", sans-serif; font-weight: 400; font-size: clamp(26px, 4vw, 34px); color: var(--blue); margin: 10px 0 0; line-height: 1.2; }
-  .era.dark h3 { color: #222; }
-  .era p { font-size: 15px; color: #111; margin-top: 6px; }
+  .era.gold::before { background: var(--lime); border-color: var(--ink); }
+  .era.dark { border-top-color: #8A93A3; background: #EEF1F5; }
+  .era.dark::before { border-color: #8A93A3; }
+  .era .yrs { display: inline-block; font-size: 13px; font-weight: 900; padding: 4px 12px; background: var(--ink); color: var(--paper); }
+  .era.gold .yrs { background: var(--lime); color: var(--ink); }
+  .era.dark .yrs { background: #6B7587; color: #fff; }
+  .era h3 { font-family: "Do Hyeon", sans-serif; font-weight: 400; font-size: clamp(26px, 4vw, 34px); color: var(--blue); margin: 10px 0 0; line-height: 1.2; }
+  .era.dark h3 { color: #3A4458; }
+  .era p { font-size: 15px; color: var(--text); margin-top: 6px; }
   .era .facts { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
-  .era .facts span { font-size: 13px; font-weight: 700; padding: 4px 10px; background: #111; color: var(--paper); }
-  .era .facts span.w { background: var(--lime); color: #111; }
-  .era .facts span.l { background: var(--pink); color: #111; }
+  .era .facts span { font-size: 13px; font-weight: 700; padding: 4px 10px; background: var(--ink); color: var(--paper); }
+  .era .facts span.w { background: var(--lime); color: var(--ink); }
+  .era .facts span.l { background: var(--pink); color: #fff; }
   .era { cursor: pointer; outline: none; transition: box-shadow .2s ease, transform .2s ease; }
-  .era h3::after { content: " ＋"; content: " ＋" / ""; font-size: .6em; color: #444; }
+  .era h3::after { content: " ＋"; content: " ＋" / ""; font-size: .6em; color: var(--muted); }
   .era-more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s ease; }
   .era-more > div { overflow: hidden; }
   .era.open .era-more { grid-template-rows: 1fr; }
@@ -563,42 +566,42 @@
   .tabs button {
     font: inherit; font-weight: 800; font-size: 15px;
     padding: 9px 20px;
-    border: 3px solid var(--paper); background: transparent; color: var(--paper);
+    border: 3px solid var(--blue); background: #fff; color: var(--blue);
     cursor: pointer;
   }
-  .tabs button:hover { border-color: var(--lime); color: var(--lime); }
+  .tabs button:hover { background: var(--sky); }
   .tabs button.on { background: var(--blue); border-color: var(--blue); color: #fff; }
   .stat-wrap { overflow-x: auto; }
   .st { border-collapse: separate; border-spacing: 0; width: 100%; font-size: 14px; white-space: nowrap; text-align: right; }
   .st th, .st td { padding: 10px 12px; border-bottom: 1px solid var(--line); }
-  .st th { background: #111; color: var(--paper); font-size: 13px; font-weight: 800; }
-  .st th:hover { background: #2A2A2A; }
+  .st th { background: var(--ink); color: var(--paper); font-size: 13px; font-weight: 800; }
+  .st th:hover { background: #163A7A; }
   .st th button { all: unset; cursor: pointer; }
   .st th button:focus-visible { outline: 2px solid var(--lime); }
   .st th.sorted { background: var(--blue); color: #fff; }
   .st th.sorted button::after { content: " ▼"; content: " ▼" / ""; font-size: 10px; }
   .st th.sorted.asc button::after { content: " ▲"; content: " ▲" / ""; }
-  .st td.sorted { background: #C4C4C4; font-weight: 900; color: var(--blue); }
+  .st td.sorted { background: var(--sky); font-weight: 900; color: var(--blue); }
   .st th:first-child, .st td:first-child { position: sticky; left: 0; text-align: left; z-index: 1; border-right: 1px solid var(--line); }
   .st td:first-child { background: var(--card); font-weight: 800; color: var(--text); }
   .st th.sorted:first-child { background: var(--blue); }
-  .st tbody tr:hover td { background: #CACACA; }
+  .st tbody tr:hover td { background: #F2F6FC; }
   .st tbody tr:last-child td { border-bottom: none; }
   .st-help { display: flex; flex-wrap: wrap; gap: 4px 14px; justify-content: center; margin-top: 16px; font-size: 13px; color: var(--dim); }
-  .st-help b { color: var(--paper); }
+  .st-help b { color: var(--ink); }
 
   /* ===== 순위 그래프 ===== */
   .ranks { padding: 24px 18px 16px; }
   .ranks .bars { display: grid; grid-template-columns: repeat(17, 1fr); gap: 4px; align-items: end; height: 200px; }
   .ranks .bar { display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; }
   .ranks .bar i { display: block; flex-shrink: 0; width: 100%; max-width: 34px; background: var(--blue); }
-  .ranks .bar.champ i { background: var(--lime); box-shadow: inset 0 0 0 2px #111; }
+  .ranks .bar.champ i { background: var(--lime); box-shadow: inset 0 0 0 2px var(--ink); }
   .ranks .bar.low i { background: #8A8A8A; }
-  .ranks .bar b { font-size: 13px; margin-bottom: 4px; color: #111; }
+  .ranks .bar b { font-size: 13px; margin-bottom: 4px; color: var(--ink); }
   .ranks .yrs { display: grid; grid-template-columns: repeat(17, 1fr); gap: 4px; margin-top: 6px; }
-  .ranks .yrs span { font-size: 11px; color: #444; text-align: center; font-weight: 700; }
-  .legend { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 14px; font-size: 13px; color: #333; font-weight: 700; }
-  .legend i { display: inline-block; width: 12px; height: 12px; margin-right: 5px; vertical-align: -1px; border: 1px solid #111; }
+  .ranks .yrs span { font-size: 11px; color: var(--muted); text-align: center; font-weight: 700; }
+  .legend { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 14px; font-size: 13px; color: var(--muted); font-weight: 700; }
+  .legend i { display: inline-block; width: 12px; height: 12px; margin-right: 5px; vertical-align: -1px; border: 1px solid var(--ink); }
   @media (max-width: 560px) {
     .ranks { padding: 20px 10px 14px; }
     .ranks .bars { height: 160px; gap: 2px; }
@@ -610,12 +613,12 @@
   /* ===== 2026 장 시작 ===== */
   .chapter-head { background: var(--blue); color: var(--paper); text-align: center; padding: 56px 16px; overflow: hidden; }
   .chapter-head .k {
-    font-family: "Silkscreen", monospace; font-weight: 700;
+    font-family: "Graduate", serif; font-weight: 400;
     font-size: clamp(20px, 3.4vw, 32px); letter-spacing: 2px; line-height: 1;
-    color: #111; -webkit-text-stroke: 7px var(--lime); paint-order: stroke fill;
+    color: var(--ink); -webkit-text-stroke: 7px var(--lime); paint-order: stroke fill;
     margin-bottom: 14px;
   }
-  .chapter-head h2 { -webkit-text-stroke-color: #111; margin: 6px 0 12px; }
+  .chapter-head h2 { -webkit-text-stroke-color: var(--ink); margin: 6px 0 12px; }
   .chapter-head p { color: #E3E6FF; }
 </style>
 </head>
@@ -658,37 +661,37 @@
   <div class="wrap">
     <div class="menu">
       <a class="feature card" href="#history" data-title="우승 반지">
-        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="38" r="16" fill="none" stroke="#111" stroke-width="12"/><circle cx="32" cy="38" r="16" fill="none" stroke="#F2D04B" stroke-width="5"/><path d="M22 13h20l7 8-17 15-17-15z" fill="#FF2E9A" stroke="#111" stroke-width="3.5" stroke-linejoin="round"/><path d="M15 21h34M27 13l-4 8 9 15 9-15-4-8" fill="none" stroke="#111" stroke-width="2.5" stroke-linejoin="round"/></svg></div>
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="38" r="16" fill="none" stroke="#0A2A66" stroke-width="12"/><circle cx="32" cy="38" r="16" fill="none" stroke="#FFC93C" stroke-width="5"/><path d="M22 13h20l7 8-17 15-17-15z" fill="#D7263D" stroke="#0A2A66" stroke-width="3.5" stroke-linejoin="round"/><path d="M15 21h34M27 13l-4 8 9 15 9-15-4-8" fill="none" stroke="#0A2A66" stroke-width="2.5" stroke-linejoin="round"/></svg></div>
         <span class="tag">1985 – 2026</span>
         <h3>우승 반지</h3>
         <p>1985년부터 2026년까지 모은 우승 반지 9개</p>
       </a>
       <a class="feature card" href="#story" data-title="우승 연대기">
-        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M14 8v48" stroke="#111" stroke-width="5"/><rect x="7" y="7" width="14" height="14" fill="#F2D04B" stroke="#111" stroke-width="3.5"/><rect x="7" y="25" width="14" height="14" fill="#1828DC" stroke="#111" stroke-width="3.5"/><rect x="7" y="43" width="14" height="14" fill="#FF2E9A" stroke="#111" stroke-width="3.5"/><rect x="27" y="10" width="30" height="8" fill="#111"/><rect x="27" y="28" width="21" height="8" fill="#111"/><rect x="27" y="46" width="27" height="8" fill="#111"/></svg></div>
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M14 8v48" stroke="#0A2A66" stroke-width="5"/><rect x="7" y="7" width="14" height="14" fill="#FFC93C" stroke="#0A2A66" stroke-width="3.5"/><rect x="7" y="25" width="14" height="14" fill="#074CA1" stroke="#0A2A66" stroke-width="3.5"/><rect x="7" y="43" width="14" height="14" fill="#D7263D" stroke="#0A2A66" stroke-width="3.5"/><rect x="27" y="10" width="30" height="8" fill="#0A2A66"/><rect x="27" y="28" width="21" height="8" fill="#0A2A66"/><rect x="27" y="46" width="27" height="8" fill="#0A2A66"/></svg></div>
         <span class="tag">일곱 장면</span>
         <h3>우승 연대기</h3>
         <p>창단부터 V9까지, 삼성의 45년을 일곱 장면으로</p>
       </a>
       <a class="feature card" href="#ranks" data-title="정규시즌 순위 변화">
-        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><g stroke="#111" stroke-width="3.5" stroke-linejoin="round"><rect x="7" y="30" width="11" height="24" fill="#1828DC"/><rect x="20" y="14" width="11" height="40" fill="#F2D04B"/><rect x="33" y="40" width="11" height="14" fill="#8A8A8A"/><rect x="46" y="7" width="11" height="47" fill="#F2D04B"/></g><path d="M3 56h58" stroke="#111" stroke-width="5"/></svg></div>
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><g stroke="#0A2A66" stroke-width="3.5" stroke-linejoin="round"><rect x="7" y="30" width="11" height="24" fill="#074CA1"/><rect x="20" y="14" width="11" height="40" fill="#FFC93C"/><rect x="33" y="40" width="11" height="14" fill="#8A8A8A"/><rect x="46" y="7" width="11" height="47" fill="#FFC93C"/></g><path d="M3 56h58" stroke="#0A2A66" stroke-width="5"/></svg></div>
         <span class="tag">2010 – 2026</span>
         <h3>순위 변화</h3>
         <p>왕조에서 암흑기, 다시 정상까지 한눈에</p>
       </a>
       <a class="feature card hot" href="#season2026" data-title="2026 우승 한눈에">
-        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><g fill="none" stroke="#111" stroke-width="4" stroke-linejoin="round"><path d="M18 13H9v5c0 8 5 13 12 13"/><path d="M46 13h9v5c0 8-5 13-12 13"/></g><path d="M17 7h30v15c0 10-7 17-15 17s-15-7-15-17z" fill="#F2D04B" stroke="#111" stroke-width="3.5" stroke-linejoin="round"/><rect x="28" y="38" width="8" height="9" fill="#111"/><rect x="17" y="46" width="30" height="10" fill="#D8D8D8" stroke="#111" stroke-width="3.5"/></svg></div>
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><g fill="none" stroke="#0A2A66" stroke-width="4" stroke-linejoin="round"><path d="M18 13H9v5c0 8 5 13 12 13"/><path d="M46 13h9v5c0 8-5 13-12 13"/></g><path d="M17 7h30v15c0 10-7 17-15 17s-15-7-15-17z" fill="#FFC93C" stroke="#0A2A66" stroke-width="3.5" stroke-linejoin="round"/><rect x="28" y="38" width="8" height="9" fill="#0A2A66"/><rect x="17" y="46" width="30" height="10" fill="#FFFFFF" stroke="#0A2A66" stroke-width="3.5"/></svg></div>
         <span class="tag">V9</span>
         <h3>2026 우승 한눈에</h3>
         <p>숫자로 보는 우승과 포스트시즌 7승 3패의 길</p>
       </a>
       <a class="feature card" href="#games" data-title="한국시리즈 경기별 기록">
-        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="24" fill="#D8D8D8" stroke="#111" stroke-width="4"/><path d="M19 12c7 10 7 30 0 40M45 12c-7 10-7 30 0 40" fill="none" stroke="#FF2E9A" stroke-width="4" stroke-dasharray="4 3"/></svg></div>
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="24" fill="#FFFFFF" stroke="#0A2A66" stroke-width="4"/><path d="M19 12c7 10 7 30 0 40M45 12c-7 10-7 30 0 40" fill="none" stroke="#D7263D" stroke-width="4" stroke-dasharray="4 3"/></svg></div>
         <span class="tag">1 – 5차전</span>
         <h3>경기 기록</h3>
         <p>한국시리즈 이닝별 점수와 득점 장면</p>
       </a>
       <a class="feature card" href="#players" data-title="선수별 기록">
-        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 5l8 17 19 2-14 13 4 19-17-10-17 10 4-19L5 24l19-2z" fill="#FF2E9A" stroke="#111" stroke-width="3.5" stroke-linejoin="round"/></svg></div>
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 5l8 17 19 2-14 13 4 19-17-10-17 10 4-19L5 24l19-2z" fill="#D7263D" stroke="#0A2A66" stroke-width="3.5" stroke-linejoin="round"/></svg></div>
         <span class="tag">MVP 구자욱</span>
         <h3>선수별 기록</h3>
         <p>MVP 구자욱과 우승 주역들, 그리고 전체 선수 기록</p>
@@ -1075,7 +1078,7 @@
   // ===== 꽃가루(색종이) 효과 =====
   const canvas = document.getElementById("confetti");
   const ctx = canvas.getContext("2d");
-  const colors = ["#1828DC", "#FF2E9A", "#6BFF4A", "#D8D8D8", "#FFE94D"];
+  const colors = ["#074CA1", "#0A2A66", "#6FA0DC", "#CFDDF3", "#FFC93C"];
   let pieces = [];
 
   const hero = document.querySelector(".hero");
@@ -1144,6 +1147,10 @@
       "<p class='ri-n'>" + note + "</p>";
   }
   ringBtns.forEach((b) => b.addEventListener("click", () => showRing(b.dataset.y)));
+  // 컴퓨터(마우스)에서는 반지에 커서만 올려도 그 해 기록이 보여요. 폰에서는 지금처럼 눌러야 해요.
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    ringBtns.forEach((b) => b.addEventListener("mouseenter", () => showRing(b.dataset.y)));
+  }
   showRing(2026);
 
   // ===== 정규시즌 순위 그래프 =====
