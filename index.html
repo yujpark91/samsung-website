@@ -433,8 +433,6 @@
   .mvp-role { color: #E3E6FF; font-weight: 700; margin-top: 6px; }
   .mvp-line { margin-top: 10px; font-size: 16px; color: #E3E6FF; }
   .mvp-line b { color: var(--lime); font-size: 20px; }
-  .mvp-hint { display: inline-block; margin-top: 16px; font-size: 14px; font-weight: 700; color: var(--lime); }
-  .mvp.open .mvp-hint { display: none; }
   .mvp > div:first-child { display: flex; flex-direction: column; }
   .mvp-stats {
     display: grid;
@@ -705,7 +703,7 @@
   <div class="wrap">
     <p class="kicker" aria-hidden="true">CHAMPIONSHIP RINGS</p>
     <h2>삼성의 우승 역사</h2>
-    <p class="sub">1985년부터 2026년까지 모은 우승 반지 9개<br>반지를 누르면 상대 팀, 시리즈 전적, 감독이 보여요</p>
+    <p class="sub">1985년부터 2026년까지 모은 우승 반지 9개</p>
     <div class="history" id="rings">
       <button type="button" class="ring" data-y="1985" aria-pressed="false">1985</button>
       <button type="button" class="ring" data-y="2002" aria-pressed="false">2002</button>
@@ -727,7 +725,7 @@
   <div class="wrap">
     <p class="kicker lime" aria-hidden="true">SINCE 1982</p>
     <h2>우승 연대기</h2>
-    <p class="sub">1982년 창단부터 2026년까지, 일곱 장면으로 보는 삼성<br>카드를 누르면 자세한 기록이 보이고, 한 번 더 누르면 접혀요</p>
+    <p class="sub">1982년 창단부터 2026년까지, 일곱 장면으로 보는 삼성</p>
     <div class="timeline">
 
       <div class="era card gold" tabindex="0">
@@ -887,7 +885,7 @@
   <div class="wrap">
     <p class="kicker" aria-hidden="true">ROAD TO V9</p>
     <h2>포스트시즌 성적</h2>
-    <p class="sub">정규시즌 2위에서 시작해 우승까지 · 포스트시즌 합계 <b>7승 3패</b><br>카드에 마우스를 올리면 (핸드폰은 누르면) 경기 결과가 보여요</p>
+    <p class="sub">정규시즌 2위에서 시작해 우승까지 · 포스트시즌 합계 <b>7승 3패</b></p>
     <div class="road">
       <div class="step card reveal" tabindex="0">
         <span class="tag">정규시즌</span>
@@ -937,7 +935,6 @@
   <div class="wrap">
     <p class="kicker" aria-hidden="true">GAME BY GAME</p>
     <h2>한국시리즈 경기별 기록</h2>
-    <p class="sub">보고 싶은 경기를 누르면 세부 기록이 펼쳐져요</p>
     <div class="games" id="gameList"></div>
     <p class="note" style="color:#E3E6FF">점수는 삼성 점수를 앞에 적었어요.<br>R 득점 · H 안타 · E 실책 · B 사사구(볼넷+몸에 맞는 공, 그 팀 타자들이 얻은 수)<br>※ 이닝별 점수와 R·H·E·B는 KBO 공식 스코어보드, 나머지는 언론 보도를 바탕으로 정리했어요.</p>
   </div>
@@ -948,7 +945,7 @@
   <div class="wrap">
     <p class="kicker lime" aria-hidden="true">MVP &amp; HEROES</p>
     <h2>선수별 기록</h2>
-    <p class="sub">한국시리즈를 빛낸 선수들<br>카드를 누르면 기록이 보이고, 한 번 더 누르면 접혀요</p>
+    <p class="sub">한국시리즈를 빛낸 선수들</p>
 
     <div class="players">
       <div class="mvp card tap big" tabindex="0">
@@ -957,7 +954,6 @@
           <div class="mvp-name plus">구자욱</div>
           <p class="mvp-role">주장 · 외야수</p>
           <p class="mvp-line">타율 <b>.500</b> · 5경기 연속 안타 · 생애 첫 KS MVP</p>
-          <span class="mvp-hint">누르면 시리즈 기록 보기</span>
         </div>
         <div class="more"><div>
         <div class="mvp-stats">
@@ -1060,7 +1056,7 @@
   <div class="wrap">
     <p class="kicker" aria-hidden="true">FULL STATS</p>
     <h2>전체 선수 기록</h2>
-    <p class="sub">한국시리즈 5경기에 나온 삼성 선수 모두의 합계 기록<br>맨 윗줄의 기록 이름을 누르면 큰 순서대로 정렬돼요 · 한 번 더 누르면 작은 순서</p>
+    <p class="sub">한국시리즈 5경기에 나온 삼성 선수 모두의 합계 기록</p>
     <div class="tabs" role="tablist">
       <button type="button" class="on" data-tab="bat" role="tab" aria-selected="true">🏏 타자 (16명)</button>
       <button type="button" data-tab="pit" role="tab" aria-selected="false">⚾ 투수 (12명)</button>
