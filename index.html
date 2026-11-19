@@ -5,20 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>삼성 라이온즈 우승 기록</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Graduate&family=Noto+Sans+KR:wght@400;700;800;900&family=Yellowtail&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR:wght@400;700;800;900&family=Ultra&display=swap" rel="stylesheet">
 <style>
   /* ===== 색: 삼성 라이온즈 홈 유니폼 (흰 바탕 · 라이온즈 파랑 · 남색 글씨 · 우승 금색) ===== */
   :root {
-    --blue: #074CA1;      /* 라이온즈 파랑 */
+    --blue: #2B7DE9;      /* 라이트 블루: 제목 외 부분 */
     --blue-dark: #0A2A66;
     --ink: #0A2A66;       /* 남색: 글씨·테두리 */
     --sky: #E8F0FB;       /* 아주 연한 하늘색 바탕 */
     --sky-line: #CFDDF3;
+    --pin: #A9B4C8;       /* 홈 유니폼 핀스트라이프 회색 */
+    --trim: #2B63D1;      /* 유니폼 글씨 테두리 파랑 */
     --gold: #FFC93C;
     --red: #D7263D;
     --pink: #D7263D;      /* 패배 표시용 빨강 */
     --lime: #FFC93C;      /* 우승 금색 */
-    --hero-lime: #074CA1;
+    --hero-lime: #2B7DE9;
     --paper: #FFFFFF;
     --bg: #FFFFFF;
     --card: #FFFFFF;
@@ -41,25 +43,22 @@
 
   /* ===== 제목: 굵은 테두리 스티커 글씨 ===== */
   .kicker {
-    font-family: "Graduate", serif;
+    font-family: "Ultra", serif;
     font-weight: 400;
-    font-size: clamp(18px, 3vw, 26px);
-    line-height: 1;
-    letter-spacing: 2px;
-    color: #fff;
-    -webkit-text-stroke: 6px var(--blue);
-    paint-order: stroke fill;
+    font-size: clamp(15px, 2.4vw, 21px);
+    line-height: 1.2;
+    letter-spacing: .18em;
+    color: var(--trim);
     text-align: center;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
   }
-  .kicker.lime { color: var(--ink); -webkit-text-stroke-color: var(--lime); }
+  .kicker.lime { color: var(--trim); }
   h2 {
     font-family: "Do Hyeon", sans-serif;
     font-weight: 400;
     font-size: clamp(36px, 6vw, 58px);
     line-height: 1.1;
-    color: var(--paper);
-    -webkit-text-stroke: clamp(7px, 1.1vw, 11px) var(--blue);
+    color: var(--ink);
     paint-order: stroke fill;
     text-align: center;
     margin-bottom: 14px;
@@ -69,7 +68,7 @@
     background: var(--card);
     color: var(--text);
     border-radius: 0;
-    border: 3px solid var(--blue);
+    border: 3px solid var(--ink);
   }
 
   [hidden] { display: none !important; }
@@ -105,10 +104,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 56px 16px 72px;
-    background: linear-gradient(180deg, #fff 0%, #fff 62%, var(--sky) 100%);
+    padding: 64px 16px 80px;
+    background: repeating-linear-gradient(90deg, transparent 0 38px, var(--pin) 38px 40px), #fff;
     color: var(--ink);
   }
+  /* 목 칼라처럼 남색-흰색-파랑 줄 */
+  .hero::before, .hero::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 16px; z-index: 2;
+    background: linear-gradient(var(--ink) 0 6px, #fff 6px 9px, var(--trim) 9px 16px);
+  }
+  .hero::before { top: 0; }
+  .hero::after { bottom: 0; transform: scaleY(-1); }
   #confetti {
     position: absolute;
     top: 0; left: 0;
@@ -124,77 +130,58 @@
     gap: 32px 48px;
     align-items: center;
   }
-  .h-goth {
-    font-family: "Yellowtail", cursive; letter-spacing: -.01em;
-    font-weight: 400;
-    font-size: clamp(100px, 16vw, 220px);
-    line-height: .85;
-    color: #fff;
-    -webkit-text-stroke: clamp(10px, 1.5vw, 22px) var(--blue);
-    paint-order: stroke fill;
-    transform: rotate(-4deg);
-  }
+  /* 유니폼 가슴 글씨: 스크립트가 그려요 (글자는 똑바로, 단어는 살짝 휘게) */
+  .h-word { display: block; width: 100%; max-width: 600px; height: auto; overflow: visible; }
   .h-pixel {
-    font-family: "Graduate", serif;
+    font-family: "Ultra", serif;
     font-weight: 400;
-    font-size: clamp(32px, 5.2vw, 68px);
-    line-height: 1;
-    color: #fff;
-    -webkit-text-stroke: clamp(8px, 1vw, 14px) var(--ink);
+    font-size: clamp(18px, 2.6vw, 28px);
+    line-height: 1.2;
+    letter-spacing: .3em;
+    color: var(--ink);
+    -webkit-text-stroke: 6px #fff;
     paint-order: stroke fill;
-    transform: rotate(-3deg);
-    margin: 4px 0 0 8%;
+    margin: 10px 0 0 4px;
   }
   .hero h1 {
     font-family: "Do Hyeon", sans-serif;
     font-weight: 400;
-    font-size: clamp(46px, 7.4vw, 96px);
-    line-height: 1.05;
-    margin-top: 22px;
+    font-size: clamp(44px, 6.6vw, 84px);
+    line-height: 1.1;
+    margin-top: 18px;
   }
   .hero h1 span { display: block; paint-order: stroke fill; }
-  .hero h1 .h1a { color: var(--paper); -webkit-text-stroke: clamp(8px, 1.2vw, 16px) var(--blue); transform: rotate(-2deg); }
-  .hero h1 .h1b { color: var(--blue); -webkit-text-stroke: clamp(8px, 1.2vw, 16px) var(--sky-line); transform: rotate(-3deg); margin-top: .1em; }
+  .hero h1 .h1a { color: var(--ink); -webkit-text-stroke: clamp(8px, 1.1vw, 12px) #fff; }
+  .hero h1 .h1b { color: var(--trim); -webkit-text-stroke: clamp(8px, 1.1vw, 12px) #fff; margin-top: .05em; }
   .h-right { position: relative; display: flex; flex-direction: column; align-items: center; padding: 30px 0 0; }
   .h-paper {
-    width: min(100%, 380px);
-    background: var(--blue);
-    color: #fff;
-    padding: 30px 28px 34px;
-    box-shadow: 10px 10px 0 var(--ink);
-    transform: rotate(4deg);
+    width: min(100% - 20px, 360px);
+    background: #fff;
+    color: var(--ink);
+    padding: 26px 26px 28px;
+    border: 4px solid var(--ink);
+    box-shadow: 0 0 0 4px #fff, 0 0 0 9px var(--trim);
   }
   .h-paper .a {
-    font-family: "Graduate", serif; font-weight: 400;
-    font-size: clamp(44px, 5.4vw, 76px); line-height: .95; letter-spacing: 0;
+    font-family: "Ultra", serif; font-weight: 400;
+    font-size: clamp(36px, 4.4vw, 56px); line-height: 1.05; letter-spacing: 0;
   }
-  .h-paper .line { height: 6px; background: #fff; margin: 20px 0 14px; }
+  .h-paper .line { height: 6px; background: var(--trim); margin: 16px 0 12px; }
   .h-paper .c {
-    font-family: "Graduate", serif; font-weight: 400;
-    font-size: clamp(22px, 2.6vw, 34px); line-height: 1.1;
+    font-family: "Ultra", serif; font-weight: 400;
+    font-size: clamp(17px, 2vw, 23px); line-height: 1.25;
   }
   .h-sticker {
-    position: absolute; left: -6px; top: 0;
-    background: #fff;
-    box-shadow: 0 0 0 6px var(--blue);
+    position: absolute; left: 0; top: 0; z-index: 1;
+    background: var(--ink);
+    box-shadow: 0 0 0 4px #fff, 0 0 0 8px var(--trim);
     padding: 10px 14px;
-    font-family: "Graduate", serif; font-weight: 400;
-    font-size: clamp(16px, 2vw, 26px); line-height: 1.05;
-    color: var(--blue);
-    transform: rotate(-8deg);
-  }
-  .h-v9 {
-    align-self: flex-end;
-    margin: .12em -.04em 0 0;
-    font-family: "Graduate", serif; font-weight: 400;
-    font-size: clamp(150px, 18vw, 260px);
-    line-height: .8;
-    letter-spacing: -.02em;
-    color: var(--blue);
-    -webkit-text-stroke: clamp(12px, 1.6vw, 24px) var(--sky-line);
-    paint-order: stroke fill;
+    font-family: "Ultra", serif; font-weight: 400;
+    font-size: clamp(14px, 1.7vw, 20px); line-height: 1.2;
+    color: #fff;
     transform: rotate(-6deg);
   }
+  .h-v9 { display: block; width: min(100%, 290px); height: auto; overflow: visible; margin-top: 28px; }
   /* 아래로 내려 보라는 화살표: 세로선 없는 꺾쇠, 연하게 반짝이며 위아래로 통통 */
   .scroll-hint {
     position: fixed; left: 50%; bottom: 18px; z-index: 5;
@@ -211,7 +198,7 @@
   @keyframes hint-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(9px); } }
   @keyframes hint-glow {
     0%, 100% { opacity: .35; filter: drop-shadow(0 0 0 transparent); }
-    50% { opacity: .9; filter: drop-shadow(0 0 6px rgba(7,76,161,.45)); }
+    50% { opacity: .9; filter: drop-shadow(0 0 6px rgba(43,125,233,.45)); }
   }
   @media (prefers-reduced-motion: reduce) { .scroll-hint { animation: none; opacity: .7; } }
   @media (max-width: 760px) {
@@ -219,7 +206,7 @@
     .hero-inner { grid-template-columns: 1fr; }
     .h-right { padding: 40px 0 10px; }
     .hero { padding-bottom: 24px; }
-    .h-v9 { align-self: center; margin: .12em 0 0; font-size: clamp(140px, 44vw, 230px); }
+    .h-v9 { width: min(70%, 240px); }
   }
 
   /* ===== 목록: 반응형 카드 (데스크톱 3열 · 태블릿 2열 · 모바일 1열) ===== */
@@ -318,7 +305,7 @@
 
   /* ===== 한국시리즈 경기 기록 (파란 판) ===== */
   .final { background: var(--blue); color: var(--paper); }
-  .final h2 { -webkit-text-stroke-color: var(--ink); }
+  .final h2 { color: #fff; -webkit-text-stroke: clamp(7px, 1.1vw, 11px) var(--ink); }
   .final .sub { color: #E3E6FF; }
   .final .kicker { -webkit-text-stroke-color: var(--lime); }
   .games { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
@@ -368,7 +355,7 @@
   .ls th { font-size: 12px; opacity: .7; font-weight: 700; }
   .ls td:first-child, .ls th:first-child { text-align: left; font-weight: 800; padding-left: 12px; }
   .ls td.r { font-weight: 900; color: var(--lime); border-left: 1px solid #ffffff33; }
-  .ls td.hit { color: #fff; font-weight: 900; background: #074CA1aa; }
+  .ls td.hit { color: #fff; font-weight: 900; background: #2B7DE9aa; }
   .ls tr + tr td { border-top: 1px solid #ffffff1a; }
   .ls td.k { border-left: 1px solid #ffffff33; font-weight: 700; }
   .ls th.k { border-left: 1px solid #ffffff33; }
@@ -459,7 +446,7 @@
     width: 96px; height: 96px;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-family: "Graduate", serif; font-weight: 400;
+    font-family: "Ultra", serif; font-weight: 400;
     font-size: 20px; letter-spacing: 0;
     background: var(--paper);
     color: var(--blue);
@@ -470,7 +457,7 @@
     transform: scale(1.2);
     box-shadow: 0 0 0 6px var(--blue);
   }
-  .ring { font-family: "Graduate", serif; cursor: pointer; }
+  .ring { font-family: "Ultra", serif; cursor: pointer; }
   .ring:hover, .ring:focus-visible { outline: none; box-shadow: 0 0 0 5px var(--lime); }
   .ring.on { background: var(--blue); color: #fff; border-color: var(--ink); box-shadow: 0 0 0 5px var(--lime); }
   .ring.now.on { background: var(--lime); color: var(--ink); box-shadow: 0 0 0 6px var(--blue), 0 0 0 11px var(--ink); }
@@ -611,12 +598,12 @@
   /* ===== 2026 장 시작 ===== */
   .chapter-head { background: var(--blue); color: var(--paper); text-align: center; padding: 56px 16px; overflow: hidden; }
   .chapter-head .k {
-    font-family: "Graduate", serif; font-weight: 400;
+    font-family: "Ultra", serif; font-weight: 400;
     font-size: clamp(20px, 3.4vw, 32px); letter-spacing: 2px; line-height: 1;
-    color: var(--ink); -webkit-text-stroke: 7px var(--lime); paint-order: stroke fill;
+    color: #fff;
     margin-bottom: 14px;
   }
-  .chapter-head h2 { -webkit-text-stroke-color: var(--ink); margin: 6px 0 12px; }
+  .chapter-head h2 { color: #fff; -webkit-text-stroke: clamp(7px, 1.1vw, 11px) var(--ink); margin: 6px 0 12px; }
   .chapter-head p { color: #E3E6FF; }
 </style>
 </head>
@@ -627,7 +614,7 @@
   <canvas id="confetti"></canvas>
   <div class="hero-inner">
     <div class="h-left">
-      <p class="h-goth" aria-hidden="true">lions</p>
+      <svg class="h-word" data-word="LIONS" aria-hidden="true"></svg>
       <p class="h-pixel" aria-hidden="true">SAMSUNG</p>
       <h1><span class="h1a">삼성 라이온즈</span><span class="h1b">우승의 기록</span></h1>
     </div>
@@ -638,7 +625,7 @@
         <div class="c">Korean Series<br>Champions<br>2026</div>
       </div>
       <div class="h-sticker">12 YEARS<br>LATER!!</div>
-      <div class="h-v9">V9</div>
+      <svg class="h-v9" data-word="V9" data-arch="0" aria-hidden="true"></svg>
     </div>
   </div>
   <a class="scroll-hint" href="#menu" aria-label="아래 내용 보기">
@@ -665,13 +652,13 @@
         <p>1985년부터 2026년까지 모은 우승 반지 9개</p>
       </a>
       <a class="feature card" href="#story" data-title="우승 연대기">
-        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M14 8v48" stroke="#0A2A66" stroke-width="5"/><rect x="7" y="7" width="14" height="14" fill="#FFC93C" stroke="#0A2A66" stroke-width="3.5"/><rect x="7" y="25" width="14" height="14" fill="#074CA1" stroke="#0A2A66" stroke-width="3.5"/><rect x="7" y="43" width="14" height="14" fill="#D7263D" stroke="#0A2A66" stroke-width="3.5"/><rect x="27" y="10" width="30" height="8" fill="#0A2A66"/><rect x="27" y="28" width="21" height="8" fill="#0A2A66"/><rect x="27" y="46" width="27" height="8" fill="#0A2A66"/></svg></div>
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M14 8v48" stroke="#0A2A66" stroke-width="5"/><rect x="7" y="7" width="14" height="14" fill="#FFC93C" stroke="#0A2A66" stroke-width="3.5"/><rect x="7" y="25" width="14" height="14" fill="#2B7DE9" stroke="#0A2A66" stroke-width="3.5"/><rect x="7" y="43" width="14" height="14" fill="#D7263D" stroke="#0A2A66" stroke-width="3.5"/><rect x="27" y="10" width="30" height="8" fill="#0A2A66"/><rect x="27" y="28" width="21" height="8" fill="#0A2A66"/><rect x="27" y="46" width="27" height="8" fill="#0A2A66"/></svg></div>
         <span class="tag">일곱 장면</span>
         <h3>우승 연대기</h3>
         <p>창단부터 V9까지, 삼성의 45년을 일곱 장면으로</p>
       </a>
       <a class="feature card" href="#ranks" data-title="정규시즌 순위 변화">
-        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><g stroke="#0A2A66" stroke-width="3.5" stroke-linejoin="round"><rect x="7" y="30" width="11" height="24" fill="#074CA1"/><rect x="20" y="14" width="11" height="40" fill="#FFC93C"/><rect x="33" y="40" width="11" height="14" fill="#8A8A8A"/><rect x="46" y="7" width="11" height="47" fill="#FFC93C"/></g><path d="M3 56h58" stroke="#0A2A66" stroke-width="5"/></svg></div>
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 64 64"><g stroke="#0A2A66" stroke-width="3.5" stroke-linejoin="round"><rect x="7" y="30" width="11" height="24" fill="#2B7DE9"/><rect x="20" y="14" width="11" height="40" fill="#FFC93C"/><rect x="33" y="40" width="11" height="14" fill="#8A8A8A"/><rect x="46" y="7" width="11" height="47" fill="#FFC93C"/></g><path d="M3 56h58" stroke="#0A2A66" stroke-width="5"/></svg></div>
         <span class="tag">2010 – 2026</span>
         <h3>순위 변화</h3>
         <p>왕조에서 암흑기, 다시 정상까지 한눈에</p>
@@ -1071,10 +1058,55 @@
 
 
 <script>
+  // ===== 유니폼 가슴 글씨 (LIONS, V9) =====
+  // 글자는 똑바로 세우고 단어 전체를 살짝 휘게, 양 끝 글자는 조금 크게.
+  // 파란 테두리 → 흰 줄 → 남색 글씨 순서로 겹쳐 그려요.
+  (function () {
+    const NS = "http://www.w3.org/2000/svg";
+    const LAYERS = [["#2B63D1", 26], ["#FFFFFF", 12], ["#0A2A66", 0]];
+    const SIZE = 130, SQUEEZE = 0.78, GAP = 6;
+    function drawWord(svg) {
+      const word = svg.dataset.word;
+      const flat = svg.dataset.arch === "0";
+      const arch = flat ? 0 : 26, endScale = flat ? 1 : 1.1;
+      svg.innerHTML = "";
+      const widths = [...word].map((ch) => {
+        const t = document.createElementNS(NS, "text");
+        t.setAttribute("font-family", "Ultra, serif"); t.setAttribute("font-size", SIZE);
+        t.textContent = ch; svg.appendChild(t);
+        const w = t.getComputedTextLength() * SQUEEZE; t.remove(); return w;
+      });
+      const total = widths.reduce((a, b) => a + b, 0) + GAP * (word.length - 1);
+      let cur = -total / 2;
+      const pos = [...word].map((ch, i) => {
+        const cx = cur + widths[i] / 2; cur += widths[i] + GAP;
+        const k = total > 0 ? cx / (total / 2) : 0;
+        return { ch, cx, lift: arch * (1 - k * k), sy: 1 + (endScale - 1) * k * k };
+      });
+      for (const [color, sw] of LAYERS) {
+        const g = document.createElementNS(NS, "g");
+        g.setAttribute("fill", color); g.setAttribute("font-family", "Ultra, serif");
+        g.setAttribute("font-size", SIZE); g.setAttribute("text-anchor", "middle");
+        if (sw) { g.setAttribute("stroke", color); g.setAttribute("stroke-width", sw); g.setAttribute("stroke-linejoin", "round"); }
+        for (const p of pos) {
+          const t = document.createElementNS(NS, "text");
+          t.setAttribute("transform", `translate(${p.cx.toFixed(1)},${(-p.lift).toFixed(1)}) scale(${SQUEEZE},${p.sy.toFixed(3)})`);
+          t.textContent = p.ch; g.appendChild(t);
+        }
+        svg.appendChild(g);
+      }
+      // 테두리까지 다 보이도록 여백을 넉넉히 (잘리지 않게)
+      const b = svg.getBBox(), pad = LAYERS[0][1] + 4;
+      svg.setAttribute("viewBox", `${b.x - pad} ${b.y - pad} ${b.width + pad * 2} ${b.height + pad * 2}`);
+    }
+    const drawAll = () => document.querySelectorAll("svg[data-word]").forEach(drawWord);
+    document.fonts.load(SIZE + "px Ultra").then(drawAll, drawAll);
+  })();
+
   // ===== 꽃가루(색종이) 효과 =====
   const canvas = document.getElementById("confetti");
   const ctx = canvas.getContext("2d");
-  const colors = ["#074CA1", "#0A2A66", "#6FA0DC", "#CFDDF3", "#FFC93C"];
+  const colors = ["#2B7DE9", "#0A2A66", "#6FA0DC", "#CFDDF3", "#FFC93C"];
   let pieces = [];
 
   const hero = document.querySelector(".hero");
